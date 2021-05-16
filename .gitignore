@@ -1,0 +1,26 @@
+AlgorythmicsGame/obj/
+AlgorythmicsGame/bin/
+*.user
+.vs/config/applicationhost.config
+.vs/AlgorythmicsGame/v15/Server/sqlite3/storage.ide-wal
+.vs/AlgorythmicsGame/v15/Server/sqlite3/storage.ide-shm
+.vs/AlgorythmicsGame/v15/Server/sqlite3/storage.ide
+.vs/AlgorythmicsGame/v15/Server/sqlite3/db.lock
+.vs/AlgorythmicsGame/v15/.suo
+.vs/AlgorythmicsGame/DesignTimeBuild/.dtbcache
+to do sept. 12.txt
+hgignore_global.txt
+gitignore_global.txt
+Useful links.txt
+To know/algorithmDetails.png
+To know/41667406_259330541385392_1755596632751079424_n.jpg
+To know/41558891_1386071684863198_6428137664838369280_n.jpg
+AlgorythmicsGame/Data/Migrations/20180912135449_BasicSteps.cs
+AlgorythmicsGame/Data/Migrations/20180912135449_BasicSteps.Designer.cs
+/AlgorythmicsGame/logs
+.vs/AlgorythmicsGame/v16/Server/sqlite3/storage.ide-wal
+.vs/AlgorythmicsGame/v16/Server/sqlite3/storage.ide-shm
+.vs/AlgorythmicsGame/v16/Server/sqlite3/storage.ide
+.vs/AlgorythmicsGame/v16/Server/sqlite3/db.lock
+.vs/AlgorythmicsGame/v16/.suo
+/.vs/AlgorythmicsGameGame/v15/Server/sqlite3/db.lock
