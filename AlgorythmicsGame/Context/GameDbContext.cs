@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using AlgorythmicsGame.Models;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,7 @@ namespace AlgorythmicsGame.Context
         {
         }
 
-        DbSet<OrganizedMatch> Matches { get; set; }
+        public DbSet<OrganizedMatch> Matches { get; set; }
+        public DbSet<Algorithm> Algorithms { get; set; }
     }
 }

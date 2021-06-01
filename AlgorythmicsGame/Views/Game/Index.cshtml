@@ -1,0 +1,140 @@
+﻿@model AlgorythmicsGame.Models.AlgorithmViewModel
+@{
+    ViewData["Title"] = "Details";
+    List<String> recursiveAlgorithms = new List<String>() { "quick", "heap", "binary", "merge", "nqueens" };
+    bool isRecursive = false;
+    if (recursiveAlgorithms.Contains(Model.Algorithm.AlgorithmNickname))
+    {
+        isRecursive = true;
+    }
+}
+@section Styles {
+    <link rel="stylesheet" href="~/css/courses.css" />
+}
+
+@*<div class="page-header col-lg-12" style="padding-left:30px">
+        <h1>@Model.Algorithm.Name</h1>
+    </div>*@
+
+<div class="algorithm-container">
+    <div class="algorithm-title">
+        <h1>@Model.Algorithm.Name</h1>
+    </div>
+    <div class="content hover01">
+        <div class="description">
+            <p>@Model.Algorithm.Description</p>
+        </div>
+        @*@{var imageUrl = "~/images/learningsteps/" + @Model.ActiveLearningStep.Name + ".png"; }*@
+        <img src="~/images/learningsteps/video.png" />
+
+    </div>
+
+    <div class="learningstep-container">
+        <partial name="@Model.PartialViewName" />
+        
+    </div>
+    @*@if (Model.RelatedCourses.Count > 0)
+        {
+            <div class="col-lg-12" style="padding:0px">
+                <div class="row" style="padding-bottom: 30px">
+                    <h1>@Localizer["algorithms_details_related"]</h1>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut imperdiet nisl vitae sem scelerisque cursus. Vivamus a ante a enim auctor ullamcorper sit amet vel lacus. In ullamcorper, eros ut tempor tristique, elit lacus pharetra augue, nec lobortis quam eros vel sapien. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.
+                    </p>
+                </div>
+                <div class="row">
+                    @foreach (var course in Model.RelatedCourses)
+                    {
+                        <a class="courseLink" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Id">
+                            <div class="courseContainer col-xs-12 col-sm-4 col-md-3">
+                                <div class="courseHeader" style="background-color: darkgray; color:white;">
+                                    <h4 class="mb-1">
+                                        @course.Name.Abbreviate(15)
+                                    </h4>
+                                    <p><small><i>@course.Algorithm.Name</i></small></p>
+                                </div>
+                                <div class="courseDescription">
+                                    <p class="mb-1">
+                                        @course.Description.Abbreviate(100)
+                                    </p>
+                                </div>
+                            </div>
+                        </a>
+                    }
+                </div>
+            </div>
+        }*@
+
+    @*<div class="row">
+            <hr style="width:100%" />
+            <a asp-action="Index" asp-route-filter="@Model.Algorithm.Type"> <span class="glyphicon glyphicon-chevron-left"></span>Back to List</a>
+        </div>*@
+</div>
+
+<div class="modal fade" id="congratulations">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 class="modal-title">Animation Finished!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <p> Congratulations you won! </p>
+                <img src="~/images/home/join.png" />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    @*<environment include="Development">*@
+    <script src="~/js/common/utilities.js"></script>
+    <script src="~/js/common/mutualFunctions.js"></script>
+    <script src="~/js/common/enums.js"></script>
+    @if (!string.IsNullOrWhiteSpace(Model.LearningStepScriptName))
+    {
+        <script src="~/js/learningSteps/@Model.LearningStepScriptName"></script>
+    }
+    <script src="~/js/algorithms/sorting/@Model.AlgorithmScriptName"></script>
+    @*</environment>
+        <environment exclude="Development">
+            <script src="~/js/common/mutualFunctions.js"></script>
+            <script src="~/js/common/enums.js"></script>
+            @if (!string.IsNullOrWhiteSpace(Model.LearningStepScriptName))
+            {
+                <script src="~/js/learningSteps/@Model.LearningStepScriptName"></script>
+            }
+            <script src="~/js/algorithms/sorting/@Model.AlgorithmScriptName"></script>
+        </environment>*@
+
+    <script>
+
+
+        var model = {
+            inputType: AlgoRythmics.Enums.InputType.RandomInput,
+            playbackType: AlgoRythmics.Enums.PlaybackType.Automatic,
+            displayType: AlgoRythmics.Enums.DisplayModeWhiteBox,
+            teacherInput: '',
+            algorithmId: @Model.Algorithm.Id,
+            learningStepNumber: 1,
+            algorithmType: '@Model.Algorithm.Type',
+            defaultCourse: true,
+            algorithmIsRecursive: @(isRecursive?1:0)
+        }
+        $(document).ready(function () { AlgoRythmics.initComponents(model) });
+    </script>
+
+}

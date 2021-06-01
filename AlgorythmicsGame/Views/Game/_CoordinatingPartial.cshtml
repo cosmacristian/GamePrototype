@@ -1,0 +1,151 @@
+﻿@model AlgorythmicsGame.Models.AnimationViewModel
+<link rel="stylesheet" href="~/css/animation.css" />
+
+<div class="@*panel panel-default*@ stepContainer">
+    @*<div class="panel-heading learningStepPanelHeader">
+              <h2>@Localizer["courses_partial_incontrol_title"]</h2>
+        </div>*@
+    @{ if (Model.Algorithm.IsPublished && Model.Algorithm.Type != AlgorythmicsGame.Models.Enums.AlgorithmType.Searching_Backtracking)
+        {
+            <div class="panel-body contentContainer">
+
+                <div class="col-lg-3 subElement helpContainer">
+
+                    <div class="subElementHeader">Control the animation</div>
+
+                    <div class="elements" id="messages">
+                        <div id="firstTip" class="subElementContent active">
+                            @*<p><b>1. @Localizer["courses_partial_incontrol_description"]</b></p>*@
+                            <p>
+                                @*@Model.CurrentStep.Description*@
+                                Help filter <span class="glyphicon glyphicon-map-marker"></span><span class="glyphicon glyphicon-transfer"></span><span class="glyphicon glyphicon-scale"></span>
+                            </p>
+                        </div>
+                        @*<div id="searchInputNeeded" class="subElementContent invisible">
+                                <hr />
+                                <p id="searchInputMessage"><i>@Localizer["courses_partial_incontrol_search"]</i></p>
+                            </div>*@
+                        @*<div id="secondTip" class="subElementContent invisible">
+                                <hr />
+                                <p><b>2. @Localizer["courses_partial_incontrol_control_title"]</b></p>
+
+                                @if (Model.Course.Algorithm.Type.Equals(Algorythmics.Models.Enums.AlgorithmType.Searching))
+                                {
+                                    @Localizer["courses_partial_incontrol_control_description_search"]
+
+                                }
+                                else
+                                {
+                                    @Localizer["courses_partial_incontrol_control_description_sort"]
+                                }
+                            </div>*@
+                        <p class="invisible" id="previousMovements">@*<b>@Localizer["courses_partial_incontrol_movement_list"]</b>*@</p>
+                        <p id="listOfMovements"><span class="glyphicon glyphicon-map" id="filterIcon"></span></p>
+                        <p id="endOfList"></p>
+                        @*<p class="invisible" id="secondTipRequest">@Localizer["courses_partial_incontrol_movement_next"]</p>
+                                  <p class="invisible needHelp needHelp1">@Localizer["courses_partial_incontrol_movement_need_help"]</p>
+                                <div class="help help1 invisible panel panel-default" id="hintContainer">
+                                    <div class="panel-heading col-lg-12" style="margin-bottom:10px">
+                                        <div class="col-lg-10 noPadding ">@Localizer["courses_partial_incontrol_movement_help"]</div>
+                                        <div class="col-lg-2 noPadding closeHint1" style="float:right; text-align:right; cursor:pointer">  <span class="glyphicon glyphicon-remove closeHint"></span> </div>
+                                    </div>
+
+                                    <div class=" panel-body">
+                                        <p> @Localizer["courses_partial_incontrol_movement_help_next"] <span id="nextMovementHint">step</span></p>
+                                    </div>
+                            </div>*@
+                        @*<div id="thirdTip" class="subElementContent invisible">
+                                <p><b>3. @Localizer["courses_partial_incontrol_done"]</b></p>
+                                <p id="finalMessage">
+                                    @Localizer["courses_partial_incontrol_final_message"]
+                                </p>
+                            </div>*@
+
+
+                    </div>
+                </div>
+
+                <div class="col-lg-6 subElement animationContainer">
+
+                    <div class="subElementHeader">Sort the array game!</div>
+                    <div id="animationContainer" class="subElement">
+                        <div class="form-group animationHeader active">
+
+                            <div class="inputs">
+                                <label class="arrayLength">Array length (n): </label>
+                                <input id="ItemCount" type="number" class="form-control" size="4" min="0" max="10" value="10" />
+                            </div>
+
+                            <div class="controllers">
+                                <span class="glyphicon glyphicon-play" id="StartAnimation"></span>
+                                <span class="glyphicon glyphicon-stop" id="StopAnimation" disabled></span>
+                            </div>
+
+
+                            <div class="inputs @(Model.Algorithm.Type.Equals(AlgorythmicsGame.Models.Enums.AlgorithmType.Searching) ? "" : "invisible")">
+                                <label class="searchValue">Value to search for (x): </label>
+                                <input id="value" type="text" class="form-control" size="3" disabled />
+                            </div>
+                        </div>
+                        <div class="col-lg-12 currentMovementContainer" style="padding-top:15px">
+                            <span class="col-lg-12"><b>Current movement </b><span style="padding-top:5px" id="CurrentMovement"> </span> </span>
+                        </div>
+                        <div class="Tray">
+                            <div style="padding-left:40px" class="col-lg-12" id="ArrayItemsContainer"> </div>
+                            <div style="@(Model.Animation.Equals(AlgorythmicsGame.Models.Enums.DisplayMode.Blackbox) ? "padding: 0px 40px; font-size: 0px" : "padding: 0px 40px")" class="col-lg-12" id="ItemContainer">
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="imageContainer animation-image">
+                        <img src="~/images/home/fromDanceToCode.png" />
+                    </div>
+
+                </div>
+                <div class="col-lg-3 subElement helpContainer">
+                    <div class="subElementHeader">Help container</div>
+                    <div class="progress">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%"></div>
+                    </div>
+                    <div class="choice" id="choiceContainer">
+                        <p id="progressMessage">Choices container</p>
+                    </div>
+                    <div class="interactiveMovements">
+                        <button class="btn animationButton" id="compareButton" data-action="compare">Compare</button>
+                        @if (!Model.Algorithm.Type.Equals(AlgorythmicsGame.Models.Enums.AlgorithmType.Searching))
+                        {
+
+                            @if (Model.Algorithm.AlgorithmNickname != "merge")
+                            {
+                                <button class="btn animationButton" id="swapButton" data-action="swap">Swap</button>
+
+                            }
+                            else
+                            {
+                                <button class="btn animationButton" id="insertButton" data-action="insert">Insert</button>
+
+                            }
+                        }
+                        <p id="statusOk" class="bg-success text-center" style="display:none; font-weight:bold">Correct</p>
+                        <p id="statusWrong" class="bg-danger text-center" style="display:none; font-weight:bold">Wrong</p>
+                    </div>
+                    <div class="subElementHeader">Help!!!</div>
+                    <div class="hint-container">
+                        <p id="hintMessage">No help</p>
+                        <p id="nextMovementHint" class="invisible"> </p>
+                    </div>
+                    <button class="btn hintButton needHelp" id="hintButton">Need help?</button>
+
+
+                </div>
+
+            </div>
+        }
+        else
+        {
+            <p>Comming Soon!</p>
+        }
+    }
+
+
+</div>
