@@ -1,56 +1,291 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
-}
-
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-  position: relative;
-  min-height: 100%;
-}
+﻿@import url(https://fonts.googleapis.com/css?family=Oswald:400,300,700);
 
 body {
-  /* Margin bottom by footer height */
-  margin-bottom: 60px;
+    padding-top: 50px;
+    height: 100%;
+    min-height: 100%;
+    padding-right: 0px;
+   font-family:  'Microsoft JhengHei UI' !important
 }
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+
+/* Wrapping element */
+/* Set some basic padding to keep content from hitting the edges */
+.container.body-content {
+   
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    left: 0;
+    height: 100%;
+    position: relative;
+    min-height: 100%;
+    overflow: hidden;
+}
+
+
+/* QR code generator */
+#qrCode {
+    margin: 15px;
+}
+
+.algorithmType {
+    background-color: aliceblue;
+    padding: 50px;
+    text-align: center;
+    border: 1px solid lightgray;
+}
+
+footer {
+    padding: 20px;
+    margin-top: 50px;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 50px; /* Height of the footer */
+    background-color:darkslategrey;
+}
+
+.basicStepListContainer {
+    background: url("/images/background2.jpg");
+    min-height: 300px;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    align-content: space-between;
+    text-align: center;
+    padding: 20px 0;
+}
+
+@media (max-width: 767px) {
+    .basicStepListContainer {
+        flex-direction: column;
+    }
+}
+
+.basicStepContainer{
+    padding: 20px 0;
+}
+
+.basicStepNumber {
+    margin: 0 auto;
+    width: 35%;
+   width:100px;
+    height: 100px;
+    border: 5px solid whitesmoke;
+    border-radius: 50%;
+    text-align: center;
+    color: whitesmoke;
+    font-size: 48px;
+    padding-top: 14px;
+    background-color: rgba(51, 107, 121,0.75);
+}
+
+.basicStepTitle {
+    margin-top: 20px;
+}
+    .basicStepTitle a {
+        color: whitesmoke;
+        text-decoration: none;
+        font-variant-caps: all-petite-caps;
+        font-size: 25px;
+    }
+
+
+#logoImg {
+    max-height: 320px;
+}
+
+.headerContent {
+    margin-bottom: 20px;
+}
+
+@media (min-width: 768px) {
+    #logoImg {
+        margin-top: 50px;
+    }
+
+    .headerContent {
+        text-align: right;
+        margin-top: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .headerContent {
+        text-align: center;
+    }
+}
+    
+#pageTitle {
+    font-variant-caps: all-petite-caps;
+    font-size: 48px;
+    color: rgb(36, 165, 142);   
+}
+
+.homeDescription {
+    font-size: larger;
+}
+
+.coursesButton {
+    background-color: rgb(15, 50, 119);
+}   
+
+.algorithmsButton {
+    background-color: rgb(36, 165, 142);
+}
+
+.algorithmsButton,
+.coursesButton {
+    color: white;
+    border-radius: 5px;
+    padding: 10px;
+    width: 130px;
+    height: 45px;
+}
+
+@media (min-width: 768px) {
+    .algorithmTypes > div:nth-child(2) {
+        border-left: 1px solid lightgrey;
+        border-right: 1px solid lightgrey;
+    }
+
+    .algorithmTypes h3 {
+        min-height: 50px;
+    }
+}
+
+
+.iconContainer {
+    margin-left: 20px;
+    margin-top: -15px;
+    border: 5px solid rgb(36,175,142);
+    width: 85px;
+    height: 85px;
+    padding: 13px;
+    border-radius: 50%;
+    float: right;
+}
+
+
+.courseContainer {
+    border: 1px solid lightgray;
+    padding: 0px;
+    margin-bottom:5px;
+    height:250px;
+}
+
+.courseHeader {
+    background-color: rgb(15, 50, 119);
+    top: 0;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+
+.courseHeader h3{
+   color:whitesmoke;
+   
+}
+.courseDescription {
+    /*margin-top: 100px;
+    top: 100px;*/
+    bottom: 0px;
+    padding:20px;
+    color:grey;
+}
+
+.coursesHeader {
+   
+    padding-bottom: 50px;
+    text-align: center;
+}
+
+.algorithmName {
+    color: rgb(36,175,142)
+}
+
+.learningStepHeader {
+    background-color: rgb(36, 165, 142) !important;
+    padding-left: 50px;
+    color: white !important;
+}
+
+
+.noPadding{
+    padding:0px;
+}
+
+.basicSteps .panel {
+    text-align: center;
+}
+
+.basicSteps .panel-body {
+    color: dimgray;
+}
+
+.basicSteps .panel-success .panel-heading {
+    color: white;
+    background-color: rgb(36, 165, 142);
+}
+
+.basicSteps .panel-success .panel-body {
+    color: darkgreen;
+}
+
+.basicSteps .visited .panel-heading {
+    background-color: darkgrey;
+}
+
+.basicSteps .visited .panel-body {
+    background-color: whitesmoke;
+}
+
+.basicSteps a {
+    text-decoration: none !important;
+    /*
+    display: block;
+    float: left;
+    width: 20%;*/
+}
+    .basicSteps a:first-child {
+        padding-left: 0;
+    }
+    .basicSteps a:last-child {
+        padding-right: 0;
+    }
+
+.basicSteps .glyphicon {
+    font-size: 30px;
+    float: right;
+}
+
+.basicSteps .glyphicon-info-sign,
+.basicSteps .glyphicon-ok-sign {
+    color: rgb(36, 165, 142);
+}
+
+
+nav .container {
+    width: 100%;
+    height: 30px;
+    padding-right: 30px;
+    background-color: #222;
+}
+
+.content{
+    padding:0px;
+}
+
+
+.Selected {
+    border-bottom: 1px solid rgb(36, 165, 142);
+}
+
+.slidecontainer {
+    width: 100%;
+}
+
+.language-selector img {
+    width: 25px;
+    margin-right: 6px;
 }

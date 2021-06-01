@@ -1,0 +1,401 @@
+﻿/*
+    cards
+*/
+body {
+    background-color: #100e17;
+    font-family: 'Open Sans', sans-serif;
+}
+
+
+.logoutNav {
+    margin-top: 0px;
+    margin-right: 20px;
+}
+
+.nagivationRight {
+    margin-top: -12px;
+}
+body {
+    background-color: #fff;
+}
+
+h1 {
+    margin: 0 auto 5px;
+    text-align: center;
+}
+
+h3 {
+    font-family: 'Bree Serif', serif;
+}
+
+.navbar-inverse .navbar-collapse, .navbar-inverse .navbar-form {
+    background-color: #222;
+    margin-top: -12px;
+    text-align: right;
+    border-radius: 8px;
+}
+
+.container > .navbar-header, .container-fluid > .navbar-header, .container > .navbar-collapse, .container-fluid > .navbar-collapse {
+    /*background-color: #222;*/
+    
+}
+.container {
+    width: 840px;
+    margin: 0 auto;
+}
+
+header {
+    font-family: 'Bree Serif', serif;
+    text-align: center;
+    margin: 50px 0 25px;
+    color: #34495E;
+}
+
+    header p {
+        margin: 0;
+        color: rgba(52, 73, 94, 0.4);
+    }
+
+/*
+    rotation
+*/
+
+.navigation {
+    font-family: 'Arial Rounded MT';
+    font-weight: 700;
+    font-size: 30px;
+    padding-left: 40px;
+    /*height: 90px;*/
+    padding-top: 20px;
+    vertical-align: middle;
+    padding-right: 40px;
+}
+
+.navigationBrand {
+    font-family: 'Arial Rounded MT';
+    font-weight: 700;
+    font-size: 30px;
+    padding-left: 40px;
+    height: 70px;
+    padding-top: 15px;
+    vertical-align: middle;
+    padding-right: 40px;
+}
+
+
+#ItemContainer {
+    white-space: nowrap;
+    margin-top: 5px;
+    height: 80px;
+}
+
+.disabledButton {
+    cursor: not-allowed;
+    pointer-events: none;
+    opacity: 0.3;
+}
+ArrayItemsContainer {
+    white-space: nowrap;
+}
+
+#ArrayItemsContainer .item {
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+
+
+#ItemContainer div,
+#ArrayItemsContainer div,
+#iPointerContainer div,
+#jPointerContainer div {
+    display: inline-block;
+    position: relative;
+    margin-left: 1%;
+    margin-right: 1%;
+    /*width: 40px;*/
+    text-align: center;
+    max-width: 80px;
+    overflow: visible !important;
+}
+
+    @media (min-width: 768px ) and (max-width: 991px) { /* sm: */
+        .narrow #ItemContainer div,
+        .narrow #ArrayItemsContainer div,
+        .narrow #iPointerContainer div,
+        .narrow #jPointerContainer div {
+            /*width: 30px;*/
+        }
+    }
+
+    @media (min-width: 992px ) and (max-width: 1199px) { /* md: */
+        .in-control #ItemContainer div,
+        .in-control #ArrayItemsContainer div,
+        .in-control #iPointerContainer div,
+        .in-control #jPointerContainer div {
+            /*width: 40px;*/
+        }
+    }
+
+    @media (min-width: 1200px) { /* lg: */
+        .narrow .in-control #ItemContainer div,
+        .narrow .in-control #ArrayItemsContainer div,
+        .narrow .in-control #iPointerContainer div,
+        .narrow .in-control #jPointerContainer div {
+            /*width: 30px;*/
+        }
+    }
+
+    @media (max-width: 767px) { /* xs: */
+        #ItemContainer div,
+        #ArrayItemsContainer div,
+        #iPointerContainer div,
+        #jPointerContainer div {
+            /*width: 25px;*/
+        }
+    }
+
+#ItemContainer div {
+    border: 2px solid #9E9E9E;
+    border-radius: 5px;
+    color: #736288;
+}
+
+#ArrayItemsContainer div {
+    
+    color: #736288;
+}
+
+        #ItemContainer div.compare {
+            border-color: gray;
+        }
+
+#ItemContainer div.swap {
+    background-color: #736288;
+    border-color: white;
+    color: white;
+    font-weight: bold;
+}
+
+#iPointerContainer div,
+#jPointerContainer div {
+    height: 40px;
+    border-bottom: 1px solid lightgray;
+    padding-top: 10px;
+    flex: 1 1;
+    padding-bottom: 10px;
+}
+
+/*           For Classes if needed remowe these*/
+.ItemContainer div {
+    border: 2px solid #9E9E9E;
+    border-radius: 5px;
+    color: #736288;
+}
+
+.ArrayItemsContainer div {
+    color: #736288;
+}
+
+.ItemContainer div.compare {
+    border-color: gray;
+}
+
+.ItemContainer div.swap {
+    background-color: #736288;
+    border-color: white;
+    color: white;
+    font-weight: bold;
+}
+
+.iPointerContainer div,
+.jPointerContainer div {
+    height: 40px;
+    border-bottom: 1px solid lightgray;
+    padding-top: 10px;
+    flex: 1 1;
+    padding-bottom: 10px;
+}
+/* Custom slider start */
+
+input[type=range] {
+    -webkit-appearance: none;
+    width: 100%;
+    margin: 3px 0;
+}
+
+    input[type=range]:focus {
+        outline: none;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        box-shadow: 0px 0px;
+        background: #d3d3d3;
+        border-radius: 0px;
+        border: 0px;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+        box-shadow: 0px 0px;
+        border: 0px;
+        height: 16px;
+        width: 12px;
+        border-radius: 0px;
+        background: rgb(36, 165, 142);
+        cursor: pointer;
+        -webkit-appearance: none;
+        margin-top: -3px;
+    }
+
+    input[type=range]::-moz-range-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        box-shadow: 0px 0px;
+        background: #d3d3d3;
+        border-radius: 0px;
+        border: 0px;
+    }
+
+    input[type=range]::-moz-range-thumb {
+        box-shadow: 0px 0px;
+        border: 0px;
+        height: 16px;
+        width: 12px;
+        border-radius: 0px;
+        background: rgb(36, 165, 142);
+        cursor: pointer;
+    }
+
+    input[type=range]::-ms-track {
+        width: 100%;
+        height: 10px;
+        cursor: pointer;
+        background: transparent;
+        border-color: transparent;
+        color: transparent;
+    }
+
+    input[type=range]::-ms-fill-lower,
+    input[type=range]::-ms-fill-upper {
+        background: #d3d3d3;
+        border: 0px;
+        border-radius: 0px;
+        box-shadow: 0px 0px;
+    }
+
+    input[type=range]::-ms-thumb {
+        box-shadow: 0px 0px;
+        border: 0px solid #000036;
+        height: 16px;
+        width: 12px;
+        border-radius: 0px;
+        background: rgba(36, 165, 142, 1);
+        cursor: pointer;
+        height: 10px;
+    }
+
+    input[type=range]:focus::-ms-fill-lower,
+    input[type=range]:focus::-ms-fill-upper {
+        background: #d3d3d3;
+    }
+
+
+.sticky {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    margin-top: 30px;
+}
+
+@-webkit-keyframes blinker {
+    from {
+        opacity: 1.0;
+    }
+
+    to {
+        opacity: 0.0;
+    }
+}
+
+.blink {
+    text-decoration: blink;
+    -webkit-animation-name: blinker;
+    -webkit-animation-duration: 0.6s;
+    -webkit-animation-iteration-count: infinite;
+    -webkit-animation-timing-function: ease-in-out;
+    -webkit-animation-direction: alternate;
+}
+
+.modal-title{
+    color: white;
+    font-size: 30px;
+    background-color: rgb(36, 165, 142);
+    font-family: 'Arial Rounded MT';
+}
+
+.modal-header .close {
+    font-size: 50px;
+    color: white;
+    opacity: .5;
+    margin-top: -50px;
+}
+
+.modal-body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.modal-body img,
+.modal-body p {
+    flex: 1 1;
+}
+
+.modal img {
+    width:400px;
+}
+
+.nextStepModal,
+.closeModal {
+    background-color: rgb(36, 165, 142);
+    color: white;
+    padding: 10px;
+    font-size: 20px;
+    flex: 1 1;
+    border-radius: 20px;
+}
+
+.modal-footer {
+    display: flex;
+    border: none;
+}
+
+.modal {
+    border-radius: 20px;
+}
+
+.modal-content {
+    border-radius: 20px;
+}
+
+.modal-header {
+    border-radius: 20px;
+}
+
+.nextStep {
+    background-color: rgb(36, 165, 142);
+    color: white!important;
+    padding: 10px;
+    font-size: 20px;
+    float: right;
+    border-radius: 20px;
+}
+
+.nextStepContainer {
+    background-color: white;
+    padding-bottom: 70px;
+}

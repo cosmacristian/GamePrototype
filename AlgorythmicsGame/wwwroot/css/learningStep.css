@@ -1,0 +1,455 @@
+﻿
+.elements {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+.interactiveMovements {
+    margin-top: 50px;
+}
+    .interactiveMovements .btn {
+        background: rgb(36, 165, 142);
+        width: 100%;
+        margin-bottom: 5px;
+        color: white;
+        transition: 0.5s ease 0s;
+        text-transform: uppercase;
+    }
+
+    .interactiveMovements .btn.inactive {
+        opacity: 0.2;
+    }
+
+
+.compareWrong {
+    background-color: rgb(255,153,51);
+}
+
+.compareCorrect {
+    background-color: rgb(36, 165, 142);
+}
+
+.contentContainer {
+    padding: 0px;
+    height: 400px;
+    width: 100%;
+}
+
+.panel-heading.stepHeader {
+    background-color: rgb(36, 165, 142);
+    padding-left: 50px;
+    color: white
+}
+
+.stepContainer {
+    border-color: white;
+    padding: 0px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+    .stepContainer h5 {
+        background-color: gray;
+        color: white;
+        padding: 10px;
+        line-height: 20px;
+        margin: 0;
+    }
+
+@media (max-width: 991px) { /* xs, sm: */
+    .stepContainer {
+        flex-direction: column;
+    }
+}
+
+.helpContainer,
+.animationContainer,
+.codeContainer {
+    border: 1px solid gainsboro;
+}
+
+    .helpContainer > div,
+    .animationContainer > div,
+    .codeContainer > div {
+        padding: 15px;
+    }
+
+@media (min-width: 768px) { /*sm, md, lg: */
+    .helpContainer > div,
+    .animationContainer > div,
+    .codeContainer > div {
+        padding: 20px;
+    }
+
+    .animationContainer > div {
+        /*height: 405px;*/
+    }
+}
+
+@media (max-width: 1199px) { /* xs, sm, md: */
+    .helpContainer > div {
+        /*height: 300px;*/
+    }
+}
+@media (min-width: 1200px) { /* lg: */
+    .helpContainer > div {
+        /*height: 405px;*/
+    }
+}
+
+@media (min-width: 992px) { /* md, lg: */
+    .codeContainer > div {
+        /*height: 300px;*/
+    }
+}
+
+.helpContainer,
+#options {
+    background-color: whitesmoke;
+}
+
+
+@media (min-width: 1200px) { /* lg: */
+    .helpContainer {
+        flex: 0 1 25%;
+    }
+
+    .animationContainer {
+        flex: 1 1 41%;
+    }
+
+    .codeContainer {
+        flex: 0 1 34%;
+    }
+    .in-control .codeContainer {
+        flex: 0 1 20%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1199px) { /* md: */
+    .helpContainer {
+        flex: 1 0 100%;
+    }
+
+    .animationContainer {
+        flex: 1 0 50%;
+    }
+
+    .codeContainer {
+        flex: 1 0 50%;
+    }
+
+    .in-control .codeContainer {
+        flex: 0 1 20%;
+    }
+}
+
+
+.animationHeader {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-between;
+}
+
+    .animationHeader > div {
+        margin-bottom: 20px;
+        width: 50%;
+    }
+
+        .animationHeader > div:first-child {
+            border-right: 1px solid gainsboro;
+            padding-right: 15px;
+        }
+
+        .animationHeader > div:last-child {
+            padding-left: 15px;
+        }
+
+        @media (min-width: 768px) { /* sm md lg */
+            .animationHeader > div:first-child {
+                padding-right: 25px;
+            }
+
+            .animationHeader > div:last-child {
+                padding-left: 25px;
+            }
+        }
+
+.animationControl {
+    min-height: 60px;
+}
+
+    .animationControl > label,
+    .animationControl > div {
+        display: inline-block;
+        margin-right: 10px;
+    }
+
+.animationControlLength,
+.animationControlSpeed {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    border-bottom: 1px solid gainsboro;
+}
+
+    .animationControlLength .form-control {
+        width: 55px;
+        display: inline-block;
+        padding: 6px;
+    }
+
+.elements {
+    padding: 30px;
+    position: relative;
+}
+
+.codeContainer .code-font {
+    font-family: 'Courier New';
+    color: black;
+    padding-right: 0;
+}
+
+.animationButton {
+    background: rgb(36, 165, 142);
+    width: 100%;
+    margin-bottom: 5px;
+    color: white;
+    transition: 0.5s ease 0s;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+}
+
+.animationButtonInactive {
+    background: rgb(36, 165, 142);
+    opacity: 0.2;
+    width: 100%;
+    margin-bottom: 10px;
+    color: white;
+    transition: 0.5s ease 0s;
+}
+
+
+
+.modal-header {
+    padding: 30px;
+    background-color: rgb(36, 165, 142);
+}
+
+@media (min-width: 768px) { /* sm, md, lg: */
+    .modal-body {
+        padding: 30px;
+    }
+}
+
+.step {
+    transition: all 0.5s ease 0s;
+}
+
+.active {
+    transition: all 0.5s ease 0s;
+    display: block;
+}
+
+.invisible {
+    transition: all 0.5s ease 0s;
+    display: none;
+}
+
+/*TODO: Remove this, use text-muted instead*/
+.seen {
+    transition: all 0.5s ease 0s;
+    color: grey;
+}
+
+.imageChooser img {
+    cursor: pointer;
+    display: inline-block;
+    width: 130px;
+}
+
+@media (max-width: 767px) { /* xs: */
+    .imageChooser img {
+        width: 100px;
+    }
+}
+
+#checkResult {
+    height: 20px;
+    width: auto;
+}
+
+.needHelp {
+    font-size: 9px;
+    font-style: italic;
+    color: gray;
+    cursor: pointer;
+}
+
+#ListOfMovements {
+    margin-left: 10px;
+    font-size: 12px;
+    font-style: italic;
+}
+
+
+.limit {
+    width: 20px;
+    transition: all 0.5s ease 0s;
+}
+
+.jLimit {
+    border: 2px solid rgb(255,153,51);
+}
+
+.iLimit {
+    border: 2px solid rgb(36, 165, 142);
+}
+
+.create-code #lowerLimitJValue,
+.create-code #upperLimitJValue,
+.create-code .jParameter {
+    transition: all 0.5s ease 0s;
+    color: rgb(255,153,51);
+}
+
+
+.create-code #lowerLimitIValue,
+.create-code #upperLimitIValue,
+.create-code .iParameter {
+    transition: all 0.5s ease 0s;
+    color: rgb(36, 165, 142);
+}
+
+#error {
+    background-color: red;
+    padding: 5px;
+    color: white;
+    margin-top: -20px;
+    margin-left: -20px;
+    margin-bottom: 10px;
+}
+
+#selectCycleButton, #listen {
+    background-color: rgb(36, 165, 142);
+}
+
+
+/* Tooltip text */
+.help {
+    color: rgb(36, 165, 142);
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    transition: all 0.5s ease 0s;
+    font-size: 10px;
+    bottom: 0;
+}
+
+@media (max-width: 1199px) { /* xs, sm, md: */
+    .help {
+        left: 15%;
+    }
+}
+
+.glyphicon {
+    transition: all 0.5s ease 0s;
+}
+
+.volume-on-off {
+    cursor: pointer;
+    font-size: 20px;
+    padding-left: 5px;
+    vertical-align: middle;
+}
+
+.glyphicon-volume-up {
+    color: rgb(36, 165, 142);
+}
+
+.glyphicon-volume-off {
+    color: grey;
+}
+
+#lastSelectionText {
+    color: dimgrey;
+    font-size: 15px;
+    font-style: italic;
+    position: absolute;
+    bottom: 0px;
+    margin-left: 20px;
+}
+
+.noPadding {
+    padding: 0px;
+}
+
+i {
+    /*border: solid black;
+  border-width: 0 3px 3px 0;*/
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+.iPointerFull {
+    background: url("/images/pointers/iFull.PNG") no-repeat center bottom;
+    background-size: 30px 30px;
+}
+
+.iPointerEmpty {
+    background: url("/images/pointers/iEmpty.PNG") no-repeat center bottom;
+    background-size: 30px 30px;
+}
+
+.jPointerFull {
+    background: url("/images/pointers/jFull.PNG") no-repeat center bottom;
+    background-size: 30px 30px;
+}
+
+.jPointerEmpty {
+    background: url("/images/pointers/jempty.PNG") no-repeat center bottom;
+    background-size: 30px 30px;
+}
+
+.midPointerFull {
+    background: url("/images/pointers/midFull.PNG") no-repeat center bottom;
+    background-size: 30px 30px;
+}
+
+.midPointerEmpty {
+    background: url("/images/pointers/midEmpty.PNG") no-repeat center bottom;
+    background-size: 30px 30px;
+}
+
+#nextStepText {
+    margin: 0px;
+    margin-top: 5px;
+}
+
+.nextStepPointer {
+    padding-right: 0px;
+}
+
+.code-indent {
+    padding-left: 20px;
+}
+
+.highlightedCode {
+    background-color: rgb(36, 165, 142);
+}
+
+.elementInSelect {
+    border-color: gray !important;
+}
+
+.blackBoxMode {
+    font-size: 0px;
+}

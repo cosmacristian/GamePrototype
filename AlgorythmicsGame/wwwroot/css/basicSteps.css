@@ -1,0 +1,235 @@
+﻿.col-lg-3.stepContainer {
+    border: 1px solid lightgray;
+    padding: 0px;
+    margin-bottom: 80px;
+}
+
+.stepHeader {
+    background-color: rgb(15, 50, 119);
+    width: 100%;
+    height: max-content;
+    position: absolute;
+    top: 0;
+    padding: 10px;
+    padding-left: 20px;
+}
+
+
+    .stepHeader h3 {
+        color: whitesmoke;
+    }
+
+.stepDescription {
+    margin-top: 100px;
+    top: 100px;
+    bottom: 0px;
+    padding: 20px;
+    color: grey;
+}
+
+.stepHeader {
+    padding-left: 50px;
+    padding-right: 50px;
+    text-align: center;
+}
+
+
+
+body {
+    -webkit-animation: fake 1s infinite;
+    animation: fake 1s infinite;
+    font-family: 'Arial Rounded MT';
+    font-size: 20px;
+    font-weight: 600;
+    background-color: rgba(1,1,1,0.4);
+    margin: 0;
+    height: 100%;
+}
+html {
+    background-image: url('../images/home/background.jpg');
+    height: 100%;
+}
+
+
+.stepContainer {
+    background-color: white;
+    margin: 80px;
+    height: auto;
+    border-radius: 7px;
+}
+
+.videos h1 {
+    color: white;
+    text-align: left;
+    padding: 20px;
+    font-size: 30px;
+    font-family: 'Arial Rounded MT';
+}
+
+.videos {
+    background-color: rgb(31, 127, 110);
+    margin-bottom: 20px;
+    border-radius: 7px;
+    border: 1px solid white;
+}
+
+
+
+.grid {
+    position: relative;
+    margin: 0 auto;
+    justify-content: center;
+    display: flex;
+    flex-wrap: wrap;
+    padding: 20px;
+    /* max-width: 1200px; */
+    list-style: none;
+    text-align: center;
+}
+
+    /* Common style */
+    .grid figure {
+        flex: 1 1;
+        position: relative;
+        float: left;
+        overflow: hidden;
+        flex: 1 1;
+        margin: 10px 1%;
+        min-width: 374px;
+        /* max-width: 480px; */
+        /* height: 500px; */
+        width: 900px;
+        min-height: 300px;
+        max-height: 416px;
+        /* width: 97%; */
+        background: #3085a3;
+        text-align: center;
+        cursor: pointer;
+    }
+
+        .grid figure img {
+            position: relative;
+            display: block;
+            min-height: 100%;
+            max-width: 100%;
+            opacity: 0.8;
+        }
+
+        .grid figure figcaption {
+            padding: 2em;
+            color: #fff;
+            text-transform: uppercase;
+            font-size: 1.25em;
+            -webkit-backface-visibility: hidden;
+            backface-visibility: hidden;
+        }
+
+            .grid figure figcaption::before,
+            .grid figure figcaption::after {
+                pointer-events: none;
+            }
+
+            .grid figure figcaption,
+            .grid figure figcaption > a {
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+
+                /* Anchor will cover the whole item by default */
+                /* For some effects it will show as a button */
+                .grid figure figcaption > a {
+                    z-index: 1000;
+                    text-indent: 200%;
+                    white-space: nowrap;
+                    font-size: 0;
+                    opacity: 0;
+                }
+
+        .grid figure h2 {
+            word-spacing: -0.15em;
+            font-weight: 300;
+        }
+
+            .grid figure h2 span {
+                font-weight: 800;
+            }
+
+        .grid figure h2,
+        .grid figure p {
+            margin: 0;
+        }
+
+        .grid figure p {
+            letter-spacing: 1px;
+            font-size: 68.5%;
+        }
+
+ 
+figure.effect {
+    background: -webkit-linear-gradient(45deg, #22682a 0%, #9b4a1b 40%, #3a342a 100%);
+    background: linear-gradient(45deg, #22682a 0%,#9b4a1b 40%,#3a342a 100%);
+   
+}
+
+    figure.effect img {
+        opacity: 0.9;
+        -webkit-transition: opacity 0.35s;
+        transition: opacity 0.35s;
+    }
+
+    figure.effect figcaption {
+        padding: 1em;
+        background-color: rgba(58,52,42,0.7)/*rgba(31, 127, 110, 0.7)*/;
+        -webkit-transition: background-color 0.35s;
+        transition: background-color 0.35s;
+    }
+
+        figure.effect figcaption::before {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            bottom: 30px;
+            left: 30px;
+            border: 1px solid #fff;
+            content: '';
+        }
+
+    figure.effect h2 {
+        margin: 20% 0 10px 0;
+        -webkit-transition: -webkit-transform 0.35s;
+        transition: transform 0.35s;
+        -webkit-transform: translate3d(0,100%,0);
+        transform: translate3d(0,100%,0);
+    }
+
+    figure.effect figcaption::before,
+    figure.effect p {
+        opacity: 0;
+        -webkit-transition: opacity 0.35s, -webkit-transform 0.35s;
+        transition: opacity 0.35s, transform 0.35s;
+        -webkit-transform: scale(0);
+        transform: scale(0);
+    }
+
+    figure.effect:hover h2 {
+        -webkit-transform: translate3d(0,0,0);
+        transform: translate3d(0,0,0);
+    }
+
+    figure.effect:hover figcaption::before,
+    figure.effect:hover p {
+        opacity: 1;
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+    figure.effect:hover figcaption {
+        background-color: rgba(58,52,42,0);
+    }
+
+    figure.effect:hover img {
+        opacity: 0.4;
+    }

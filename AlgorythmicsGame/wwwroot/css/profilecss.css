@@ -1,0 +1,58 @@
+﻿.progressValue {
+    background-color: azure;
+    border: 3px solid rgb(36, 165, 142);
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    padding-top: 25px;
+    font-size: 30px;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.w3-round-large {
+    background-color: rgb(36, 165, 142);
+    color:white;
+}
+
+.course {
+    padding: 30px;
+    border: 1px solid #d9dbdd;
+    border-radius: 10px;
+    height: 400px
+}
+
+.page-header{
+    padding-left:35px;
+}
+
+a.courseSelect{
+    color:black;
+}
+
+.courseSelect:hover .course {
+    background-color: #d9dbdd;
+    transition: all 0.5s ease 0s;
+}
+
+.userProgress{
+    margin-top:20px;
+}
+
+    .userProgress .progress-bar {
+        background-color:rgb(36, 165, 142) ;
+    }
+
+.profile-container {
+    margin: 30px;
+    padding: 20px;
+}
+
+
+body {
+    margin: 100px;
+    background-color: white;
+    box-shadow: 5px 5px;
+    color: rgb(36, 165, 142);
+    font-family: Montserrat;
+}

@@ -1,0 +1,935 @@
+﻿.arrayElement {
+    width: 50px;
+    padding: 10px;
+    border: 1px solid darkgray;
+    text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    animation-delay: 2s;
+}
+
+.workaroundHide{
+    opacity: 0.4;
+}
+
+.arrayElementContainer > p {
+    text-align: center;
+    font-size: 11px;
+    margin: 10px 0 10px;
+    color: darkgray;
+}
+
+.arrayElementContainer {
+    width: 50px;
+    padding: 0;
+    margin-right: 10px;
+    float: left;
+}
+
+.arrayName {
+    font-weight: bold;
+}
+
+.elementInComparing {
+    background-color: greenyellow;
+}
+
+.elementInComparingWrong{
+   
+}
+
+.elementToSwitch {
+    background-color: forestgreen;
+}
+
+.elementInSelect {
+    border-color: /*gray*/ rgb(0, 137, 255) !important;
+}
+
+#ArrayContainer {
+    position: relative;
+}
+
+#ArrayContainer div {
+    border: 1px solid darkgrey;
+    position: absolute;
+    width: 40px;
+    text-align: center;
+    padding-top:15px;
+    border-radius:5px;
+}
+
+.glyphicon{
+    color:darkgray;
+}
+
+.animationButton {
+    background-color: #736288;
+    width: 50px;
+    margin-bottom: 5px;
+    color: white;
+    transition: 0.5s ease 0s;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+    padding: 1px;
+    font-size: 20px;
+    margin: 20px;
+    border-radius: 30px;
+    flex: 1 1;
+}
+
+.nextStepButton,
+.hintButton {
+    background-color: rgb(36, 165, 142);
+    margin-bottom: 5px;
+    color: white;
+    transition: 0.5s ease 0s;
+    /* word-break: break-word; */
+    /* overflow-wrap: break-word; */
+    /* white-space: pre-line; */
+    /* padding: 15px; */
+    font-size: 15px;
+    /* margin: -2px; */
+    margin: 20px;
+    width: 90%;
+    border-radius: 30px;
+    flex: 1 1;
+}
+
+.nextStepButton{
+   
+    width: 90%;
+}
+
+    .nextStepButton span {
+        color: white;
+        padding-left: 20px;
+    }
+.animationButtonInactive{
+    background: rgb(36, 165, 142);
+    opacity: 0.2;
+    width: 100%;
+    margin-bottom: 10px;
+    color: white;
+    transition: 0.5s ease 0s;
+}
+
+
+.videoContainer iframe {
+    border-radius: 20px;
+    flex: 1 1;
+    min-width: 400px;
+}
+.helpContainer {
+    border-radius: 10px;
+    background-color: rgba(239, 236, 236, 0.5);
+    /*flex: 1 1;*/
+    margin-bottom: 20px;
+    min-width: 400px;
+}
+
+.elements {
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 40px; /* as the height of the other div is 30px */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    position: unset;
+    height: auto;
+}
+
+.interactiveMovements {
+    margin-top: 10px;
+    display: flex;
+}
+
+.col-lg-3.subElement, .col-lg-4.subElement, .col-lg-5.subElement, .col-lg-8.subElement, .col-lg-6.subElement, .col-lg-9.subElement {
+    padding: 0px;
+}
+
+.subElement {
+}
+
+.videoContent,
+.contentContainer {
+    padding: 0px;
+    width: 100%;
+    display: flex;
+    justify-items: center;
+    flex-wrap: wrap;
+}
+
+.videoContent {
+    background-color: white;
+    flex-wrap: wrap;
+    
+}
+
+.stepContainer {
+    border-color: white;
+    padding: 0px;
+    background-color: white;
+    padding-bottom: 40px;
+}
+
+.videoContainer,
+.animationContainer {
+    background-color: white;
+    flex: 1 1;
+    margin-bottom: 20px;
+    min-width: 400px;
+    width: 400px;
+}
+
+
+
+.elements {
+    padding: 30px;
+}
+
+.codeContainer .subElementContent {
+    font-family: 'Arial Rounded MT';
+    color: black;
+}
+
+.subElementContent p {
+    color: #3d4553;
+    font-size: 15px;
+    text-align: center;
+}
+
+.currentMovementContainer span {
+    color: #3d4553;
+    font-size: 15px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+#CurrentMovement {
+    color: rgb(36, 165, 142);
+    font-size: 15px;
+    text-align: left;
+}
+
+.subElementHeader {
+    padding: 7px;
+    text-align: center;
+    color: #3d4553;
+    font-size: 32px;
+    margin: 20px 80px 20px 80px;
+    border-bottom: 1px solid grey;
+}
+
+.modal-header {
+    padding: 30px;
+    background-color: rgb(36, 165, 142);
+}
+
+.modal-body {
+    padding: 30px;
+}
+
+.step {
+    transition: all 0.5s ease 0s;
+}
+
+.active {
+    transition: all 0.5s ease 0s;
+    display: block;
+}
+
+.invisible {
+    transition: all 0.5s ease 0s;
+    display: none;
+}
+
+.seen {
+    transition: all 0.5s ease 0s;
+    color: grey;
+}
+
+
+.cycle {
+    width: 100%;
+    height: auto;
+}
+
+.cycleImageContainer {
+    cursor: pointer;
+}
+
+#checkResult {
+    height: 20px;
+    width: auto;
+}
+
+.needHelp {
+    /*font-size: 9px;
+    font-style: italic;
+    color: gray;*/
+    cursor: pointer;
+}
+
+#code {
+    padding: 30px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    top: 60px; /* as the height of the other div is 30px */
+    left: 0;
+    right: 0;
+    bottom: 20px;
+    padding-top: 60px;
+}
+
+.limit {
+    width: 100px;
+    height: 50px;
+    text-align: center;
+    border-radius: 20px;
+    transition: all 0.5s ease 0s;
+}
+
+/*.iLimit {
+    border: 2px solid red;
+}
+
+.jLimit {
+    border: 2px solid blue;
+}*/
+
+#lowerLimitIValue, #upperLimitIValue, #compareFirstParamValue, #swapFirstParamValue {
+    transition: all 0.5s ease 0s;
+    color: red;
+}
+
+.compareWrong {
+    background-color: rgb(255,153,51)!important;
+}
+
+.compareCorrect {
+    background-color: rgb(36, 165, 142)!important;
+}
+
+#lowerLimitJValue, #upperLimitJValue, #compareSecondParamValue, #swapSecondParamValue {
+    transition: all 0.5s ease 0s;
+    color: blue;
+}
+
+#error {
+    background-color: red;
+    top: 0px;
+    height: auto;
+    padding: 5px;
+    top: 40px;
+    color: white;
+    left: 0px;
+    position: absolute;
+}
+
+#animationContainer {
+    padding: 0px;
+}
+
+.imageContainer {
+    /*background-image: url('../images/home/fromDanceToCode.png');*/
+}
+.animationHeader {
+    margin-bottom: 30px;
+    display: flex;
+    margin-top: 50px;
+    padding: 0px 50px 0px 30px;
+    color: #3d4553;
+    font-size: 15px;
+    /* padding: 0px 50px 0px 30px; */
+    text-align: left;
+    flex-wrap: wrap;
+    /* line-height: 90px; */
+}
+    
+
+#selectCycleButton, #listen {
+    background-color: rgb(36, 165, 142);
+}
+
+#ItemCount,
+#value {
+    width: auto;
+}
+
+/* Tooltip text */
+    .help {
+    color: rgb(36, 165, 142);
+    border-radius: 6px;
+    position: absolute;
+    z-index: 1;
+    transition: all 0.5s ease 0s;
+    font-size: 10px;
+}
+
+
+.glyphicon {
+    transition: all 0.5s ease 0s;
+}
+
+.glyphicon-volume-up, .glyphicon-volume-off {
+    cursor: pointer;
+}
+
+.glyphicon-volume-up {
+    color: rgb(36, 165, 142);
+    /*font-size: 20px;*/
+    padding-left: 5px;
+}
+
+.glyphicon-volume-off {
+    color: grey;
+    /*font-size: 20px;*/
+    padding-left: 5px;
+}
+
+#listOfMovements {
+    margin-left: 5px;
+    color: #9e9a9a;
+    font-size: 18px;
+    padding: 5px;
+    font-style: normal;
+    line-height: 20px;
+    background-color: white;
+    border-radius: 10px;
+}
+
+.animationBox {
+    background-color: white;
+    /*border: solid;
+    padding: 5px 5px;
+    height: 30px;
+    border-radius: 6px;
+    border-color: dimgray;
+    transition: all 0.5s ease 0s;*/
+}
+
+
+.noPadding {
+    padding: 0px;
+}
+
+i {
+    display: inline-block;
+    padding: 3px;
+}
+
+.right {
+    transform: rotate(-45deg);
+    -webkit-transform: rotate(-45deg);
+}
+
+p span {
+    padding: 5px 20px 5px 20px;
+    margin-left: 8px;
+    color: white;
+    background-color: #736288;
+    color: white!important;
+    border-radius: 10px;
+    white-space:nowrap;
+}
+
+.iPointerContainer,
+.jPointerContainer,
+.ItemContainer,
+.ArrayItemsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    align-items: flex-start;
+    padding: 5px 20px;
+}
+
+.LowerContainer {
+    /* display: grid;
+    grid-template-areas: 'wa wb'*/
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.selected {
+    /*background-color: yellow;*/
+    border-color: /*gray*/ rgb(0, 137, 255) !important;
+}
+
+div.item.faded.selected {
+    /*background-color: rgba(180, 180, 90, 1);*/
+    border-color: /*darkgray*/ rgb(0, 37, 155) !important;
+}
+
+div.item.faded {
+    background-color: rgba(90, 90, 90, 1);
+}
+
+div.Workspace.faded {
+    background-color: rgba(217, 217, 217, 1);
+}
+
+.Workspace {
+    margin: 0 0 15px 0;
+    border-radius: 25px;
+}
+
+.left_side.Array {
+    /*justify-self: stretch;
+    grid-column-start: 1;
+    grid-column-end: 2;
+    grid-row-start: 1;
+    grid-row-end: span end;
+    grid-area: wa;*/
+    flex-grow: 1;
+}
+
+.right_side.Array {
+    /*justify-self: stretch;
+    grid-column-start: 2;
+    grid-column-end: span end;
+    grid-row-start: 1;
+    grid-row-end: span end;
+    grid-area: wb;*/
+    flex-grow: 1;
+}
+
+#ItemContainer,
+#ArrayItemsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    padding: 10px 40px;
+    justify-content: space-evenly;
+}
+
+.ItemContainer, 
+.ArrayItemsContainer {
+    display: flex;
+    flex-wrap: nowrap;
+    /**/padding: 10px 40px;
+}
+
+.item {
+    flex: 1 1;
+    text-align: center;
+    margin-left: 1%;
+    margin-right: 1%;
+    max-width:80px;
+    font-size:80%;
+}
+
+.ArrayItemsContainer .item {
+    margin-left: 0%;
+    margin-right: 0%;
+}
+
+.searchValue {
+    flex: 2 1;
+}
+
+.animationHeader span {
+    flex: 1 1;
+}
+
+.inputs {
+    display: flex;
+    flex: 1 1;
+    flex-wrap: nowrap;
+}
+
+
+.searchValue,
+.arrayLength {
+    flex: 3 1;
+    margin-top: 10px;
+    font-size: 15px;
+    margin-right: 15px;
+}
+#value,
+#ItemCount {
+    flex: 1 1;
+    color: white;
+    background-color: #736288;
+    border-radius: 10px;
+    padding: 20px;
+    /*margin-top: 20px;*/
+    text-align: center;
+}
+
+.controllers {
+    flex: 1 1;
+    flex-wrap: nowrap;
+    margin: -5px 10px 0px 80px;
+    white-space: nowrap;
+}
+    .controllers span {
+        flex: 1 1;
+        color: white;
+        background-color: #736288;
+        padding: 20px;
+        border-radius: 10px;
+    }
+
+.imageContainer {
+    /*background-image: url(../images/home/fromDanceToCode.png);
+    height: 280px;*/
+    display: flex;
+    opacity: 0.2;
+    /*background-size: cover;
+    margin-top: 250px;*/
+}
+
+.imageContainer img {
+    flex: 1 1;
+    width: 300px;
+}
+
+
+.progress-bar {
+    background-color: rgb(36, 165, 142);
+    border-radius: 10px;
+    
+}
+
+.progress {
+    margin: 20px;
+    background-color: #aba7a7;
+    border-radius: 10px;
+}
+
+
+.choice {
+    border-radius: 10px;
+    margin: 20px;
+    background-color: rgb(36, 165, 142);
+    color: white;
+    min-height: 120px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+    padding: 20px;
+}
+
+.hint-container {
+    border-radius: 10px;
+    margin: 0px 20px 10px 20px;
+    height: 140px;
+    background: #d3d3d3;
+    color: darkslategray;
+    min-height: 80px;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 20px;
+}
+.hint-container p,
+.choice p{
+    padding: 10px;
+}
+
+
+.animation-speed {
+    display: flex;
+}
+
+.animation-speed div {
+        flex: 2 1;
+    }
+    .animation-speed p {
+        flex: 1 1;
+        color: grey;
+        font-size: 15px;
+        margin: 12px -10px 0px 20px;
+        padding-top: 8px;
+    }
+
+
+.slideContainer {
+    width: 100%;
+    margin: 18px;
+}
+
+.slider {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 15px;
+    border-radius: 5px;
+    background: #d3d3d3;
+    outline: none;
+    opacity: 0.7;
+    -webkit-transition: .2s;
+    transition: opacity .2s;
+}
+
+    .slider:hover {
+        opacity: 1;
+    }
+
+    .slider::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+    .slider::-moz-range-thumb {
+        width: 25px;
+        height: 25px;
+        border-radius: 50%;
+        background: #4CAF50;
+        cursor: pointer;
+    }
+
+
+.wellDone {
+    /*-webkit-transform: scale(1);
+    transform: scale(1.1);*/
+    background-color: rgb(36, 165, 142);
+    color: white;
+    -webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;
+}
+
+.wrongAnswer {
+    background-color: red;
+    border-color: red;
+    color:white;
+}
+
+.hintAdded {
+    background-color: rgb(36, 165, 142);
+    color: white;
+}
+
+
+#filterIcon {
+    background-color: transparent;
+    color: #736288!important;
+}
+
+.nextStepButtonAnimation,
+.videoButton {
+    background-color: rgb(36, 165, 142);
+    margin-bottom: 5px;
+    color: white;
+    transition: 0.5s ease 0s;
+    /* word-break: break-word; */
+    /* overflow-wrap: break-word; */
+    /* white-space: pre-line; */
+    /* padding: 15px; */
+    font-size: 15px;
+    /* margin: -2px; */
+    margin: 20px 90px 0px 0px;
+    /* width: 80%; */
+    border-radius: 30px;
+    text-align: right;
+    flex: 1 1;
+    float: right;
+}
+
+.nextStepButtonAnimation span,
+.videoButton span {
+    color: white;
+    padding-left: 20px;
+}
+
+.videoInformation {
+    padding: 80px;
+    line-height: 40px;
+}
+
+.animation-image {
+    margin-top: 250px;
+}
+
+
+.speed-container {
+    padding: 20px;
+    display: flex;
+
+}
+
+
+.slideContainer{
+    flex: 4 1;
+}
+.speed-information {
+    flex: 1 1;
+    margin-top: 15px;
+    font-size: 15px;
+    margin-left: 10px;
+}
+
+.simpleAnimation {
+    flex: 3 1!important;
+}
+
+.simpleAnimationHelp {
+    flex: 1 1;
+}
+.video-image {
+    margin-top: 0px;
+}
+
+
+/*Nqueens board*/
+
+.column {
+    float: left;
+    width: auto;
+    padding: 10px;
+    text-align: center;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.row:after {
+    content: "";
+    display: table;
+    clear: both;
+}
+
+
+.Board {
+    margin: 0 0 0 auto;
+    width: 200px;
+    height: 200px;
+    display: grid;
+    /*grid-template-columns: repeat(4, 1fr);*/
+    /*grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+    grid-template-rows: repeat(auto-fit, minmax(50px, 1fr));*/
+    border-style: solid;
+    grid-area: wa;
+}
+
+
+.UpperIndices {
+    margin: 0 0 0 auto;
+    width: 200px;
+    display: flex;
+    grid-area: wu;
+}
+
+.UpperIndices div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 50px;
+}
+
+.SideIndices {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 20px 0 0;
+    Height: 200px;
+}
+
+.SideIndices div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    Height: 50px;
+}
+
+.SideContainer {
+    display: flex;
+    grid-area: wb;
+}
+
+
+.IndexContainer {
+    display: flex;
+    border-style: solid;
+    border-color: black;
+    flex-direction: column;
+    justify-content: space-between;
+    margin: 0 auto 0 0;
+    Height: 200px;
+    grid-area: wi;
+}
+
+.IndexContainer div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    Height: 50px;
+    Width: 50px;
+}
+
+
+
+.white.checked {
+    background-color: rgb(261, 261, 211);
+    ;
+}
+
+.white.found {
+    background-color: rgb(261, 211, 211);
+    ;
+}
+
+.white.good {
+    background-color: rgb(211, 261, 211);
+    ;
+}
+
+.black.checked {
+    background-color: rgb(178, 178, 128);
+    ;
+}
+
+.black.found {
+    background-color: rgb(178, 128, 128);
+    ;
+}
+
+.black.good {
+    background-color: rgb(128, 178, 128);
+    ;
+}
+
+.black {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(128, 128, 128);
+    ;
+}
+
+.white {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(211, 211, 211);
+    ;
+}
+
+
+.DecorContainer {
+    /*display: inline-flex;*/
+    display: grid;
+    grid-auto-rows: auto;
+    grid-template-areas: 'wu wo' 'wa wb';
+}
+
+.DecorHelpContainer {
+    display: inline-flex;
+}
+
+.BoardContainer {
+    flex: 1 0;
+    /*display: grid;
+    grid-template-areas:
+      'wu wo wo'
+      'wa wb wc'
+      'wl wl wl'
+    ;*/
+    /*align-self: center;*/
+}

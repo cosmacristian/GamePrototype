@@ -1,0 +1,410 @@
+﻿.helpContainer {
+    height: 250px;
+    overflow-y: auto;
+    position: sticky;
+    top: 50px;
+}
+
+#animationContainer, .animationContainer {
+    /*height: 100%;*/
+}
+
+.basicSteps {
+    margin-right: 15px;
+}
+
+@media(min-width: 1200px) {
+    .helpContainer {
+        height: 800px;
+    }
+    #animationContainer, .animationContainer {
+        /*height: 400px;*/
+    }
+    #remoteContainer, #arrayLengthContainer, #leftInputContainer, #searchingValueContainer {
+        border-right: 1px solid gainsboro;
+    }
+}
+
+#options {
+    position: sticky;
+    /*padding: 100px 0px 0px 0;*/
+}
+
+#mainContent {
+    transition: all 0.2s ease 0s;
+    padding: 0 15px 15px;
+}
+    #mainContent .panel {
+        margin-bottom: 0px;
+    }
+
+@media (min-width: 768px) { /* sm, md, lg: */
+    #mainContent {
+        margin-right: 121px;
+        padding: 0 0 20px 20px;
+    }
+
+    #mainContent.narrow {
+        margin-right: 271px;
+    }
+}
+
+.learningStepList {
+    margin-bottom: 0;
+}
+
+@media (max-width: 767px) { /* xs: */
+    .collapsed .learningStepList {
+        display: none;
+    }
+}
+
+.learningStepLink {
+    text-decoration: none !important;
+    padding: 20px;
+    border-bottom: 3px solid white;
+    display: block;
+    background-color: whitesmoke;
+    color: gray;
+    pointer-events: none;
+    cursor: default;
+}
+
+    .learningStepLink.active,
+    .learningStepLink.visited {
+        background-color: darkgrey;
+        color: black;
+        pointer-events: all;
+        cursor: pointer;
+    }
+
+    .learningStepLink.active {
+        background-color: rgb(36, 165, 142);
+    }
+
+
+.course-title {
+    text-align: center;
+    padding: 30px 10px 0px 70px;
+    color: rgb(36, 165, 142);
+}
+
+.stepNumber {
+    transition: all 0.5s ease 0s;
+    text-align: center;
+    vertical-align: middle;
+    border: 1px solid gray;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    background-color: white;
+    color: gray;
+    line-height: 2;
+    float: left;
+    margin-top: 16px;
+    justify-items: center;
+}
+
+    .collapsed .stepNumber {
+        height: 50px;
+        width: 50px;
+        font-size: 20px;
+        line-height: 2.4;
+        float: none;
+        margin: 0 auto;
+    }
+
+    .visited .stepNumber,
+    .active .stepNumber {
+        background-color: rgb(36, 165, 142);
+        color: white;
+        border-color: white;
+    }
+
+.stepContent {
+    float: left;
+    margin-left: 15px;
+}
+
+    .stepContent h4 {
+        color: black;
+    }
+
+    .visited .stepContent h4,
+    .active .stepContent h4 {
+        color: white;
+    }
+
+
+#navbarContainer {
+    transition: all 0.2s ease 0s;
+    padding: 0;
+    background: #343434;
+}
+
+.collapsed .hide-collapsed {
+    display: none;
+}
+
+
+#sidebarCollapse {
+    padding: 20px;
+    cursor: pointer;
+    color: gray;
+    font-size: 24px;
+}
+
+.collapsed #sidebarCollapse {
+    text-align: center;
+}
+
+@media (max-width: 767px) { /* xs: */
+    .page-header {
+        margin-right: 60px;
+    }
+}
+
+#sidebar {
+    height: 100%;
+    width: 270px;
+    position: fixed;
+    z-index: 1;
+    top: 80px;
+    right: 0;
+    background-color: #222222;
+    overflow-x: hidden;
+    padding-top: 20px;
+    padding-right: 10px;
+}
+
+    .collapsed #sidebar {
+        width: 120px;
+    }
+
+    @media (max-width: 767px) { /* xs: */
+
+        #sidebar {
+            border-left: 2px solid white;
+        }
+
+        .collapsed #sidebar {
+            width: 70px;
+            height: auto;
+            border-bottom-left-radius: 20px;
+        }
+    }
+
+a, a:visited, a:hover, a:active {
+    color: inherit;
+}
+
+
+.hide {
+    display: none;
+}
+
+.show {
+    display: block;
+}
+
+
+.learningStepHeader {
+    background-color: rgb(36, 165, 142) !important;
+    padding-left: 50px;
+    color: white !important;
+}
+
+
+.nextStepLinkContainer {
+    height: 50px;
+    color: grey;
+    text-align: right;
+    padding: 8px 10px 10px;
+    border: 1px solid gainsboro;
+    background-color: whitesmoke;
+    transition: all 0.5s ease 0s;
+}
+
+    .nextStepLinkContainer a:hover {
+        text-decoration: none;
+        color: rgb(36, 165, 142);
+    }
+
+    .nextStepLinkContainer span {
+        vertical-align: middle;
+        line-height: 30px;
+    }
+
+    .nextStepLinkContainer .glyphicon {
+        font-size: 30px;
+        padding-left: 10px;
+        line-height: 20px;
+    }
+
+.min_idx {
+    /*border: 2px solid rgb(36, 165, 142) !important;*/
+    background-color: #c7c7c7;
+}
+
+.modal-header {
+    background-color: rgb(36, 165, 142);
+    padding:30px;
+}
+
+#finishCourse:hover {
+    cursor: pointer;
+    transition: all 0.5s ease 0s;
+    color: rgb(36, 165, 142);
+}
+
+#finishCourse {
+    cursor: pointer;
+}
+
+.stepPanel {
+    margin-left: 15px;
+    margin-right: 15px;
+    padding: 0px;
+}
+
+.sortedElement {
+    background-color: rgb(36, 165, 142);
+    color: white!important;
+}
+
+div.item.sortedElement.faded {
+    background-color: rgb(0, 120, 100);
+    color: grey !important;
+}
+
+#lengthError {
+    color:red;
+    font-size:12px; 
+    font-style:italic;
+}
+
+.interactiveAnimation{
+    border:0px!important;
+}
+
+
+
+/*
+    redesign styles
+*/
+
+
+html {
+    background-image: url('../images/home/background.jpg');
+    background-size:cover;
+    height: 100%;
+}
+.algorithm-container {
+
+    margin: 80px;
+    background-color: white;
+    border-radius: 5px;
+
+}
+
+
+body {
+    -webkit-animation: fake 1s infinite;
+    animation: fake 1s infinite;
+    font-family: 'Arial Rounded MT'!important;
+    font-size: 20px;
+    font-weight: 600;
+    background-color: rgba(1,1,1,0.4);
+    margin: 0;
+    height: 100%;
+}
+
+.algorithm-title h1 {
+    text-align: left;
+    padding: 30px 10px 0px 70px;
+    color: rgb(36, 165, 142);
+}
+
+.content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-items:center;
+}
+
+.content img{
+    flex: 1 1;
+    width: 400px;
+    padding: 20px;
+}
+
+    .content .description {
+        flex: 1 1;
+        width: 500px;
+        padding: 80px;
+        line-height: 50px;
+        margin: 70px;
+        border-radius: 20px;
+        color: white;
+        background-color: rgb(36, 165, 142);
+        vertical-align: middle;
+    }
+
+.hover01 img {
+    -webkit-transform: scale(0.9);
+    transform: scale(0.9);
+    /*-webkit-transition: .3s ease-in-out;
+    transition: .3s ease-in-out;*/
+}
+
+    .hover01 img:hover {
+        -webkit-transform: scale(1);
+        transform: scale(1);
+    }
+
+
+.tab-container {
+    display: flex;
+    background-color: rgba(239, 236, 236, 0.5);
+    border-radius: 10px;
+    margin: 10px 70px;
+    flex-wrap: wrap;
+}
+
+    
+    .tab-container label {
+        padding: 10px 10px 10px 30px;
+        /*color: #7b7878;*/
+    }
+
+    .tab-container span {
+        padding: 10px 10px 10px 30px;
+        color: #343434;
+    }
+    .tab-container .next {
+        color: #d2cece;
+    }
+
+    .tab-container .current {
+        color: rgb(36, 165, 142);
+    }
+
+    .tab-container .previous {
+        color: gray;
+    }
+
+
+.learningstep-container {
+    margin: 70px;
+    background-color: #e5dfdf;
+}
+
+
+.course-content {
+    margin: 80px;
+    background-color: white;
+    /*box-shadow: 5px 5px 5px 5px gray;*/
+    padding: 20px;
+    display: block;
+    /*overflow: auto;*/
+    border-radius: 5px;
+}
