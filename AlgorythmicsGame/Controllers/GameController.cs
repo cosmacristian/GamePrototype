@@ -93,8 +93,20 @@ namespace AlgorythmicsGame.Controllers
         // GET: Algorithms/Details/5
         public async Task<IActionResult> Index(int id)
         {
-            var algorithmsModel = await _context.Algorithms.SingleOrDefaultAsync(m => m.Id == id);
-           
+            //var algorithmsModel = await _context.Algorithms.SingleOrDefaultAsync(m => m.Id == id);
+            var algorithmsModel = new Algorithm(){
+                Id = 1,
+                Name = "bubble",
+                Description = "BUBBLE SORT",
+                Type = AlgorithmType.Sorting,
+                Icon = "https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-info-icon.png",
+                Url = "https://youtu.be/S41XFYRX6Bs",
+                AlgorithmPicture = "https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-info-icon.png",
+                AlgorithmNickname = "bubble",
+                IsPublished = true
+            };
+
+
             if (algorithmsModel == null)
             {
                 return NotFound();
@@ -126,12 +138,18 @@ namespace AlgorythmicsGame.Controllers
 
             var algorithmPartialName = "../AlgorithmCodes/_" + algorithmsModel.AlgorithmNickname + "Partial.cshtml";
 
-            partialViewName = "~/Views/Courses/_CoordinatingPartial.cshtml";
+            partialViewName = "~/Views/Game/_CoordinatingPartial.cshtml";
             learningStepScriptName = "inControl.js";
 
             AlgorithmViewModel model = new AlgorithmViewModel()
             {
                 Algorithm = algorithmsModel,
+                AnimationModel = new AnimationViewModel()
+                {
+                    Algorithm = algorithmsModel,
+                    PartialViewName = partialViewName,
+                    AlgorithmPartialView = algorithmPartialName
+                },
                 AlgorithmScriptName = algorithmScriptName,
                 LearningStepScriptName = learningStepScriptName,
                 PartialViewName = partialViewName

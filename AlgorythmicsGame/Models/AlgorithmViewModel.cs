@@ -9,6 +9,7 @@ namespace AlgorythmicsGame.Models
     {
 
         public Algorithm Algorithm { get; set; }
+        public AnimationViewModel AnimationModel { get; set; }
         public string AlgorithmScriptName;
         public string LearningStepScriptName;
         public string PartialViewName;
