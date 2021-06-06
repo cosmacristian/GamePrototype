@@ -61,7 +61,7 @@ namespace AlgorythmicsGame
             app.UseCookiePolicy();
             app.UseSignalR(routes =>
             {
-                routes.MapHub<ClickerHub>("/clickerHub");
+                routes.MapHub<GameHub>("/gameHub");
             });
 
             app.UseMvc(routes =>

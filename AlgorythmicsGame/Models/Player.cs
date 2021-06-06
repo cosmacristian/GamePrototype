@@ -8,12 +8,12 @@ namespace AlgorythmicsGame.Models
 {
     public class Player
     {
-        public String username { get; set; } 
+        public int userId { get; set; } 
         public IClientProxy client { get; set; }
 
-        public Player(String username, IClientProxy client)
+        public Player(int userId, IClientProxy client)
         {
-            this.username = username;
+            this.userId = userId;
             this.client = client;
         }
     }

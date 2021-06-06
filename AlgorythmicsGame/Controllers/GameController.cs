@@ -7,6 +7,7 @@ using AlgorythmicsGame.Models;
 using AlgorythmicsGame.Models.Enums;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using Newtonsoft.Json;
 
 namespace AlgorythmicsGame.Controllers
 {
@@ -157,7 +158,18 @@ namespace AlgorythmicsGame.Controllers
             };
             return model;
         }
-        
+
+        private void AddCookiesToAnimationModel()
+        {
+            string strUserId = Request.Cookies["PlayerID"];
+            if (string.IsNullOrEmpty(strUserId))
+            {
+                strUserId = Guid.NewGuid().ToString();
+            }
+
+            Response.Cookies.Append("PlayerID", JsonConvert.SerializeObject(strUserId));
+        }
+
         /*
         [Route("Algorithms/Details/{algorithmId}/{learningStepNumber}/hints/{hintNumber}")]
         [HttpPost]

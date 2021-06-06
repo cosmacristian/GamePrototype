@@ -30,8 +30,8 @@
     </div>
 
     <div class="learningstep-container">
-        <partial name="@Model.PartialViewName" for="AnimationModel"/>
-        
+        <partial name="@Model.PartialViewName" for="AnimationModel" />
+
     </div>
     @*@if (Model.RelatedCourses.Count > 0)
         {
@@ -101,14 +101,18 @@
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
 
     @*<environment include="Development">*@
+    <script src="~/lib/signalr/dist/browser/signalr.js"></script>
+
     <script src="~/js/common/utilities.js"></script>
     <script src="~/js/common/mutualFunctions.js"></script>
     <script src="~/js/common/enums.js"></script>
+    
     @if (!string.IsNullOrWhiteSpace(Model.LearningStepScriptName))
     {
         <script src="~/js/learningSteps/@Model.LearningStepScriptName"></script>
     }
     <script src="~/js/algorithms/sorting/@Model.AlgorithmScriptName"></script>
+    <script src="~/js/miniGame.js"></script>
     @*</environment>
         <environment exclude="Development">
             <script src="~/js/common/mutualFunctions.js"></script>
@@ -126,7 +130,7 @@
         var model = {
             inputType: AlgoRythmics.Enums.InputType.RandomInput,
             playbackType: AlgoRythmics.Enums.PlaybackType.Automatic,
-            displayType: AlgoRythmics.Enums.DisplayModeWhiteBox,
+            displayType: AlgoRythmics.Enums.DisplayMode.Whitebox,
             teacherInput: '',
             algorithmId: @Model.Algorithm.Id,
             learningStepNumber: 1,

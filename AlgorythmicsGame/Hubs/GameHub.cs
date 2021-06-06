@@ -7,9 +7,10 @@ using System.Threading.Tasks;
 
 namespace AlgorythmicsGame.Hubs
 {
-    public class ClickerHub : Hub
-    {/*
-        static Dictionary<String, Player> players= new Dictionary<string, Player>();
+    public class GameHub : Hub
+    {
+        static int idCounter = 0;
+        static Dictionary<int, Player> players = new Dictionary<int, Player>();
         static Queue<Player> waitingPlayers = new Queue<Player>();
         //Dictionary<>
         static List<Tuple<Player, Player>> games = new List<Tuple<Player, Player>>();
@@ -18,20 +19,22 @@ namespace AlgorythmicsGame.Hubs
             await Clients.All.SendAsync("ReceiveMessage", user, message);
         }
 
-        public async Task finished(string user)
+        public async Task finished(int user)
         {
-            Player winner=null;
-            Player other=null;
-            foreach(var pairs in games)
+            if(user == 0)
+                throw new Exception("Error something went wrong!");
+            Player winner = null;
+            Player other = null;
+            foreach (var pairs in games)
             {
-                if (pairs.Item1.username == user)
+                if (pairs.Item1.userId == user)
                 {
                     winner = pairs.Item1;
                     other = pairs.Item2;
                     games.Remove(pairs);
                     break;
                 }
-                if (pairs.Item2.username == user)
+                if (pairs.Item2.userId == user)
                 {
                     other = pairs.Item1;
                     winner = pairs.Item2;
@@ -39,22 +42,24 @@ namespace AlgorythmicsGame.Hubs
                     break;
                 }
             }
-            if(winner == null || other == null )
+            if (winner == null || other == null)
                 throw new Exception("Error at the end");
 
-            var send1 = winner.client.SendAsync("winner", winner.username);
-            var send2 = other.client.SendAsync("winner", winner.username);
+            var send1 = winner.client.SendAsync("winner", "You won!");
+            var send2 = other.client.SendAsync("winner", "You lose!");
 
             await Task.WhenAll(send1, send2);
         }
 
-        public async Task waiting(string user)
+        public async Task waiting(int user)
         {
             if (players.ContainsKey(user))
-                throw new Exception("Select different Name");
-            Player player = new Player(user, Clients.Caller);
+                throw new Exception("Error something went wrong!");
+            idCounter += 1;
+            Player player = new Player(idCounter, Clients.Caller);
             Player partner;
-            players.Add(user,player);
+            
+            players.Add(idCounter, player);
             if (waitingPlayers.Count <= 0)
             {
                 waitingPlayers.Enqueue(player);
@@ -65,11 +70,11 @@ namespace AlgorythmicsGame.Hubs
                 partner = waitingPlayers.Dequeue();
                 Tuple<Player, Player> pairUp = new Tuple<Player, Player>(player, partner);
                 games.Add(pairUp);
-                var player1 = player.client.SendAsync("getReady", player.username, partner.username);
-                var player2 = partner.client.SendAsync("getReady", player.username, partner.username);
+                var player1 = player.client.SendAsync("getReady", player.userId);
+                var player2 = partner.client.SendAsync("getReady", partner.userId);
 
                 await Task.WhenAll(player1, player2);
             }
-        }*/
+        }
     }
 }

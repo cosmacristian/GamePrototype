@@ -21,6 +21,8 @@ namespace AlgorythmicsGame.Context
 
         public int PlayersWaiting { get; private set; }
 
+
+
         public OrganizedMatch()
         {
             Status = 1;
