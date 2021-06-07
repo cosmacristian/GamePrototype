@@ -1,4 +1,5 @@
-﻿using AlgorythmicsGame.Models;
+﻿using AlgorythmicsGame.Context;
+using AlgorythmicsGame.Models;
 using Microsoft.AspNetCore.SignalR;
 using System;
 using System.Collections.Generic;
@@ -9,39 +10,39 @@ namespace AlgorythmicsGame.Hubs
 {
     public class GameHub : Hub
     {
-        static int idCounter = 0;
-        static Dictionary<int, Player> players = new Dictionary<int, Player>();
-        static Queue<Player> waitingPlayers = new Queue<Player>();
-        //Dictionary<>
-        static List<Tuple<Player, Player>> games = new List<Tuple<Player, Player>>();
-        public async Task SendMessage(string user, string message)
+
+        private readonly GameDbContext _context;
+
+        public GameHub(GameDbContext context)
         {
-            await Clients.All.SendAsync("ReceiveMessage", user, message);
+            _context = context;
         }
 
-        public async Task finished(int user)
+        static int idCounter = 0;
+        static Dictionary<string, Player> players = new Dictionary<string, Player>();
+        //static Queue<Player> waitingPlayers = new Queue<Player>();
+        //Dictionary<>
+        //static List<Tuple<Player, Player>> games = new List<Tuple<Player, Player>>();
+
+        public async Task finished(string userId, int matchId)
         {
-            if(user == 0)
-                throw new Exception("Error something went wrong!");
+            if(userId.Equals(""))
+                throw new Exception("Error something went wrong at user id!");
             Player winner = null;
             Player other = null;
-            foreach (var pairs in games)
-            {
-                if (pairs.Item1.userId == user)
-                {
-                    winner = pairs.Item1;
-                    other = pairs.Item2;
-                    games.Remove(pairs);
-                    break;
-                }
-                if (pairs.Item2.userId == user)
-                {
-                    other = pairs.Item1;
-                    winner = pairs.Item2;
-                    games.Remove(pairs);
-                    break;
-                }
+            OrganizedMatch match = _context.Matches.Where(t => t.MatchId == matchId).FirstOrDefault();
+            if(match == null)
+                throw new Exception("Error something went wrong at metch retriaval!");
+            if (match.player1 == userId){
+                players.TryGetValue(match.player1,out winner);
+                players.TryGetValue(match.player2, out other);
             }
+            else{
+                players.TryGetValue(match.player1, out other);
+                players.TryGetValue(match.player2, out winner);
+            }
+            _context.Matches.Remove(match);
+            var send0 =_context.SaveChangesAsync();
             if (winner == null || other == null)
                 throw new Exception("Error at the end");
 
@@ -49,32 +50,40 @@ namespace AlgorythmicsGame.Hubs
             var send2 = other.client.SendAsync("winner", "You lose!");
             
 
-            await Task.WhenAll(send1, send2);
+            await Task.WhenAll(send0, send1, send2);
         }
 
-        public async Task waiting(int user)
+        public async Task waiting()
         {
-            if (players.ContainsKey(user))
-                throw new Exception("Error something went wrong!");
-            idCounter += 1;
-            Player player = new Player(idCounter, Clients.Caller);
+            Player player = new Player(Context.ConnectionId, Clients.Caller);
             Player partner;
             
-            players.Add(idCounter, player);
-            if (waitingPlayers.Count <= 0)
+            players.Add(Context.ConnectionId, player);
+            if (_context.Matches.Where(a => a.Status == 1).Count() <= 0 )
             {
-                waitingPlayers.Enqueue(player);
+                OrganizedMatch newMatch = new OrganizedMatch(Context.ConnectionId);
                 await player.client.SendAsync("standBy");
+                _context.Matches.Add(newMatch);
+                _context.SaveChanges();
             }
             else
             {
-                partner = waitingPlayers.Dequeue();
-                Tuple<Player, Player> pairUp = new Tuple<Player, Player>(player, partner);
-                games.Add(pairUp);
-                var player1 = player.client.SendAsync("getReady", player.userId);
-                var player2 = partner.client.SendAsync("getReady", partner.userId);
+                OrganizedMatch match = _context.Matches.Where(a => a.Status == 1).FirstOrDefault();
+                if(match == null)
+                    throw new Exception("Something went wrong at match");
+                match.joinMatch(Context.ConnectionId);
+                if (players.TryGetValue(match.player1, out partner))
+                {
+                    var setup = _context.SaveChangesAsync();
+                    var player1 = player.client.SendAsync("getReady", player.userId, match.MatchId);
+                    var player2 = partner.client.SendAsync("getReady", partner.userId, match.MatchId);
 
-                await Task.WhenAll(player1, player2);
+                    await Task.WhenAll(setup, player1, player2);
+                }
+                else
+                {
+                    throw new Exception("Something went wrong at player setup");
+                }
             }
         }
     }

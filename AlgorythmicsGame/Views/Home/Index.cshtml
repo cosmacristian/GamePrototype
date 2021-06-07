@@ -1,5 +1,5 @@
-﻿
-@page
+﻿@model IEnumerable<AlgorythmicsGame.Context.OrganizedMatch>
+
 <link rel="stylesheet" href="~/css/home.css" />
 <div class="wrapper">
     <div class="section1 hover01">
@@ -11,9 +11,27 @@
                 <a asp-action="Index" asp-controller="Game" class="btn ui-button coursesButton">Learn and play!</a>
             </p>
         </div>
-        <img src="https://algorythmics.ms.sapientia.ro/images/home/interactivity.png">
+        <div class="content">
+            @foreach (var item in Model)
+            {
+                <div class="col-lg-12 list listElement">
+                    <div class="col-lg-12 list row algorithmHeader">
+                        <div class="col-1 list">
+                            @Html.DisplayFor(modelItem => item.MatchId)
+                        </div>
+                        <p class="col-6 list">Players waiting:</p>
+                        <div class="col-1 list">
+                            @Html.DisplayFor(modelItem => item.PlayersWaiting)
+                        </div>
+                        <div class="col-4 list listElementActions">
+                            <a asp-action="Index" asp-controller="Game" class="btn ui-button coursesButton">Join!</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
 
-        
+
 
         <div class="text-center">
             <h1 class="display-4">Welcome</h1>

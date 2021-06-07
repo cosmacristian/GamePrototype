@@ -8,10 +8,10 @@ namespace AlgorythmicsGame.Models
 {
     public class Player
     {
-        public int userId { get; set; } 
+        public string userId { get; set; } 
         public IClientProxy client { get; set; }
 
-        public Player(int userId, IClientProxy client)
+        public Player(string userId, IClientProxy client)
         {
             this.userId = userId;
             this.client = client;

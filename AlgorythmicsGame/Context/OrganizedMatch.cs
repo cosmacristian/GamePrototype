@@ -23,9 +23,21 @@ namespace AlgorythmicsGame.Context
         [Column("PlayersWaiting", TypeName = "tinyint")]
         public int PlayersWaiting { get; private set; }
 
-        public string player1;
-        public string player2;
 
+        [DataType(DataType.Text)]
+        [Display(Name = "HostPlayerId")]
+        [StringLength(50, ErrorMessage = "The name should be less then 50 characters")]
+        public string player1 { get; set; }
+
+        [DataType(DataType.Text)]
+        [Display(Name = "GuestPlayerId")]
+        [StringLength(50, ErrorMessage = "The name should be less then 50 characters")]
+        public string player2 { get; set; }
+
+        private OrganizedMatch()
+        {
+
+        }
 
         public OrganizedMatch(string OrganizerPlayerId)
         {
@@ -40,16 +52,12 @@ namespace AlgorythmicsGame.Context
             {
                 player2 = GuestPlayerId;
                 PlayersWaiting += 1;
+                Status = 2;
             }
             else
             {
                 throw new OperationCanceledException("Player limit reached!");
             }
-        }
-
-        public void startMatch()
-        {
-            Status = 2;
         }
 
         public void finishMatch()

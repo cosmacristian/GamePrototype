@@ -5,14 +5,23 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using AlgorythmicsGame.Models;
+using AlgorythmicsGame.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace AlgorythmicsGame.Controllers
 {
     public class HomeController : Controller
     {
-        public IActionResult Index()
+        private readonly GameDbContext _context;
+        public HomeController(GameDbContext context)
         {
-            return View();
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            List<OrganizedMatch> runningMatches = await _context.Matches.ToListAsync();
+            return View(runningMatches);
         }
 
         public IActionResult Privacy()
