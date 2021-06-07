@@ -47,6 +47,7 @@ namespace AlgorythmicsGame.Hubs
 
             var send1 = winner.client.SendAsync("winner", "You won!");
             var send2 = other.client.SendAsync("winner", "You lose!");
+            
 
             await Task.WhenAll(send1, send2);
         }

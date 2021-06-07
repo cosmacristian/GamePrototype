@@ -19,19 +19,42 @@ namespace AlgorythmicsGame.Context
         [Column("Type", TypeName = "tinyint")]
         public int Status { get; set; }
 
+        [Required]
+        [Column("PlayersWaiting", TypeName = "tinyint")]
         public int PlayersWaiting { get; private set; }
 
+        public string player1;
+        public string player2;
 
 
-        public OrganizedMatch()
+        public OrganizedMatch(string OrganizerPlayerId)
         {
             Status = 1;
+            player1 = OrganizerPlayerId;
             PlayersWaiting = 1;
         }
 
-        public void joinMatch()
+        public void joinMatch(string GuestPlayerId)
         {
-            PlayersWaiting += 1;
+            if (PlayersWaiting < 2)
+            {
+                player2 = GuestPlayerId;
+                PlayersWaiting += 1;
+            }
+            else
+            {
+                throw new OperationCanceledException("Player limit reached!");
+            }
+        }
+
+        public void startMatch()
+        {
+            Status = 2;
+        }
+
+        public void finishMatch()
+        {
+            Status = 3;
         }
     }
 }
