@@ -1,4 +1,5 @@
 ﻿using AlgorythmicsGame.Models;
+using AlgorythmicsGame.Models.Enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -15,6 +16,8 @@ namespace AlgorythmicsGame.Context
         [Key]
         public int MatchId { get; set; }
 
+        public int AlgorithmId { get; set; }
+
         [Required]
         [Column("Type", TypeName = "tinyint")]
         public int Status { get; set; }
@@ -23,6 +26,25 @@ namespace AlgorythmicsGame.Context
         [Column("PlayersWaiting", TypeName = "tinyint")]
         public int PlayersWaiting { get; private set; }
 
+        [Required]
+        [Column("ArraySize", TypeName = "tinyint")]
+        public int ArraySize { get; set; }
+        
+        [Column("DisplayMode", TypeName = "tinyint")]
+        public DisplayMode? Animation { get; set; }
+
+        [Column("InputType", TypeName = "tinyint")]
+        public InputType? InputType { get; set; }
+
+        [Display(Name = "Teacher input")]
+        [StringLength(30, ErrorMessage = "The input should be less then 30 characters")]
+        [RegularExpression("^([0-9]+,)*[0-9]+$|^([0-9]+ )*[0-9]+ *$", ErrorMessage = "The numbers must be separated with comma or space. For Example: '1,2,3,4' or '1 2 3 4'")]
+        public string TeacherInput { get; set; }
+
+        [Display(Name = "Teacher input")]
+        [StringLength(3, ErrorMessage = "The input should be less then 3 characters")]
+        [RegularExpression("(^0$)|(^[-+]?[1-9][0-9]*$)", ErrorMessage = "The number must be an integer!")]
+        public string SearchTarget { get; set; }
 
         [DataType(DataType.Text)]
         [Display(Name = "HostPlayerId")]
@@ -34,29 +56,40 @@ namespace AlgorythmicsGame.Context
         [StringLength(50, ErrorMessage = "The name should be less then 50 characters")]
         public string player2 { get; set; }
 
-        private OrganizedMatch()
+        public OrganizedMatch()
         {
-
+            Status = 0;
+            PlayersWaiting = 0;
         }
 
-        public OrganizedMatch(string OrganizerPlayerId)
+        public OrganizedMatch(string OrganizerPlayerId, int ArraySizeToSort)
         {
             Status = 1;
             player1 = OrganizerPlayerId;
             PlayersWaiting = 1;
+            ArraySize = ArraySizeToSort;
         }
 
-        public void joinMatch(string GuestPlayerId)
+        public void joinMatch(string PlayerId)
         {
-            if (PlayersWaiting < 2)
+            if (PlayersWaiting == 0)
             {
-                player2 = GuestPlayerId;
+                player1 = PlayerId;
                 PlayersWaiting += 1;
-                Status = 2;
+                Status = 1;
             }
             else
             {
-                throw new OperationCanceledException("Player limit reached!");
+                if (PlayersWaiting == 1)
+                {
+                    player2 = PlayerId;
+                    PlayersWaiting += 1;
+                    Status = 2;
+                }
+                else
+                {
+                    throw new OperationCanceledException("Player limit reached!");
+                }
             }
         }
 

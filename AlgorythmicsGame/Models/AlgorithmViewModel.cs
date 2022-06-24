@@ -13,5 +13,7 @@ namespace AlgorythmicsGame.Models
         public string AlgorithmScriptName;
         public string LearningStepScriptName;
         public string PartialViewName;
+        public int ArraySize;
+        public int MatchId;
     }
 }

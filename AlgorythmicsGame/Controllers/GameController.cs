@@ -92,20 +92,19 @@ namespace AlgorythmicsGame.Controllers
 
 
         // GET: Algorithms/Details/5
-        public async Task<IActionResult> Index(int id)
+        public async Task<IActionResult> Index(int? id)
         {
-            //var algorithmsModel = await _context.Algorithms.SingleOrDefaultAsync(m => m.Id == id);
-            var algorithmsModel = new Algorithm(){
-                Id = 1,
-                Name = "bubble",
-                Description = "BUBBLE SORT",
-                Type = AlgorithmType.Sorting,
-                Icon = "https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-info-icon.png",
-                Url = "https://youtu.be/S41XFYRX6Bs",
-                AlgorithmPicture = "https://icons.iconarchive.com/icons/paomedia/small-n-flat/256/sign-info-icon.png",
-                AlgorithmNickname = "bubble",
-                IsPublished = true
-            };
+            OrganizedMatch matchModel = null;
+            if (id != null)
+            {
+                matchModel = await _context.Matches.SingleOrDefaultAsync(m => m.MatchId == id);
+            }
+            else
+            {
+                return NotFound();
+            }
+
+            var algorithmsModel = await _context.Algorithms.SingleOrDefaultAsync(m => m.Id == matchModel.AlgorithmId);
 
 
             if (algorithmsModel == null)
@@ -114,12 +113,12 @@ namespace AlgorythmicsGame.Controllers
             }
 
             ViewData["EditMode"] = true;
-            AlgorithmViewModel model = CreateAlgorithmViewModel(id, algorithmsModel);
+            AlgorithmViewModel model = CreateAlgorithmViewModel(algorithmsModel, matchModel);
 
             return View(model);
         }
 
-        private AlgorithmViewModel CreateAlgorithmViewModel(int id, Algorithm algorithmsModel)
+        private AlgorithmViewModel CreateAlgorithmViewModel(Algorithm algorithmsModel, OrganizedMatch matchModel)
         {
             var partialViewName = "";
             var learningStepScriptName = "";
@@ -149,12 +148,17 @@ namespace AlgorythmicsGame.Controllers
                 {
                     Algorithm = algorithmsModel,
                     PartialViewName = partialViewName,
-                    AlgorithmPartialView = algorithmPartialName
+                    AlgorithmPartialView = algorithmPartialName,
+                    Animation = matchModel.Animation,
+                    InputType = matchModel.InputType,
+                    TeacherInput = matchModel.TeacherInput,
+                    SearchTarget = matchModel.SearchTarget
                 },
                 AlgorithmScriptName = algorithmScriptName,
                 LearningStepScriptName = learningStepScriptName,
-                PartialViewName = partialViewName
-
+                PartialViewName = partialViewName,
+                ArraySize = matchModel.ArraySize,
+                MatchId = matchModel.MatchId
             };
             return model;
         }

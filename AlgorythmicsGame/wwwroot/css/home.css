@@ -36,6 +36,9 @@
     /*background-image: url('../images/home/algorithms.png');*/
 }
 
+.card_text p {
+    font-size: 10px;
+}
 
 .courses img {
     flex: 1 1;
@@ -732,7 +735,7 @@ img:hover {
     flex-shrink: 1;
 }
 body {
-    background-image: url('../images/home/background.jpg');
+    background-image: url('https://algorythmics.ms.sapientia.ro/images/home/background.jpg');
     /*filter: blur(8px);
     -webkit-filter: blur(8px);*/
     background-size: auto;
@@ -796,4 +799,10 @@ body {
     box-shadow: 5px 5px 5px 5px black;
     flex: 2;
     text-decoration: none;
+}
+
+.selected {
+    border: green;
+    border-width: medium;
+    border-style: dashed;
 }

@@ -269,7 +269,7 @@ nav .container {
     width: 100%;
     height: 30px;
     padding-right: 30px;
-    background-color: #222;
+    background-color: white;
 }
 
 .content{
@@ -288,4 +288,15 @@ nav .container {
 .language-selector img {
     width: 25px;
     margin-right: 6px;
+}
+
+.hiddenGradient {
+    overflow: hidden;
+    height: 60px;
+    background-image: linear-gradient(180deg,#000000 0%,rgba(0,0,0,0));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /* position: relative; */
+    display: inline-block;
+}
 }

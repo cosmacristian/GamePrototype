@@ -3,14 +3,16 @@ using AlgorythmicsGame.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace AlgorythmicsGame.Migrations
 {
     [DbContext(typeof(GameDbContext))]
-    partial class GameDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220502195930_AddedArraySize")]
+    partial class AddedArraySize
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -24,33 +26,17 @@ namespace AlgorythmicsGame.Migrations
                         .ValueGeneratedOnAdd()
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("AlgorithmId");
-
-                    b.Property<byte?>("Animation")
-                        .HasColumnName("DisplayMode")
-                        .HasColumnType("tinyint");
-
                     b.Property<byte>("ArraySize")
                         .HasColumnName("ArraySize")
-                        .HasColumnType("tinyint");
-
-                    b.Property<byte?>("InputType")
-                        .HasColumnName("InputType")
                         .HasColumnType("tinyint");
 
                     b.Property<byte>("PlayersWaiting")
                         .HasColumnName("PlayersWaiting")
                         .HasColumnType("tinyint");
 
-                    b.Property<string>("SearchTarget")
-                        .HasMaxLength(3);
-
                     b.Property<byte>("Status")
                         .HasColumnName("Type")
                         .HasColumnType("tinyint");
-
-                    b.Property<string>("TeacherInput")
-                        .HasMaxLength(30);
 
                     b.Property<string>("player1")
                         .HasMaxLength(50);

@@ -1,0 +1,128 @@
+﻿@model AlgorythmicsGame.Models.MatchCreationViewModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section Styles {
+    <link rel="stylesheet" href="~/css/home.css" />
+    <link rel="stylesheet" href="~/css/animation.css" />
+    <link rel="stylesheet" href="~/css/shared.css" />
+    <link rel="stylesheet" href="~/css/learningStep.css" />
+}
+
+<h1>Index</h1>
+
+<h4>MatchCreationViewModel</h4>
+<hr />
+<div class="section1 hover01">
+    <div class="row content">
+        <div class="col-lg-14">
+            <form asp-action="Index">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <input type="hidden" asp-for="SelectedAlgorithmId" />
+                <input type="hidden" asp-for="SelectedAlgorithmType" />
+                <div class="form-group ArraySize">
+                    <label asp-for="ArraySize" class="control-label"></label>
+                    <input asp-for="ArraySize" class="form-control" />
+                    <span asp-validation-for="ArraySize" class="text-danger"></span>
+                </div>
+                <div class="form-group Animation">
+                    <label asp-for="Animation" class="control-label"></label>
+                    <select asp-for="Animation"
+                            asp-items="Html.GetEnumSelectList(typeof(DisplayMode))" class="form-control"></select>
+                    <span asp-validation-for="Animation" class="text-danger"></span>
+                </div>
+                <div class="form-group InputType">
+                    <label asp-for="InputType" class="control-label"></label>
+                    <select asp-for="InputType"
+                            asp-items="Html.GetEnumSelectList<AlgorythmicsGame.Models.Enums.InputType>()" class="form-control"></select>
+                    <span asp-validation-for="InputType" class="text-danger"></span>
+                </div>
+                <div class="form-group TeacherInput">
+                    <label asp-for="TeacherInput" class="control-label"></label>
+                    <input asp-for="TeacherInput" class="form-control" />
+                    <span asp-validation-for="TeacherInput" class="text-danger"></span>
+                </div>
+                <div class="form-group SearchTarget">
+                    <label asp-for="SearchTarget" class="control-label"></label>
+                    <input asp-for="SearchTarget" class="form-control" />
+                    <span asp-validation-for="SearchTarget" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="content">
+        <div class="Tray">
+            <div style="padding-left:40px" class="col-lg-12" id="ArrayItemsContainer">
+            </div>
+            <div class="col-lg-12" id="ItemContainer">
+            </div>
+        </div>
+        <div>
+            @foreach (var item in Model.AvailableAlgorithms)
+            {
+                <div class="col-lg-12 list listElement @item.Type" style="
+                    background-image: url(@item.AlgorithmPicture);
+                    background-size: contain;
+                    background-repeat: no-repeat;
+                    background-position: right;">
+                    <div class="col-lg-12 list row algorithmHeader">
+                        <div class="col-10 list">
+                            <h3>@Html.DisplayFor(modelItem => item.Name)</h3>
+                        </div>
+                        <div class="col-10 list card_text hiddenGradient">
+                            <p>@Html.DisplayFor(modelItem => item.Description)</p>
+                        </div>
+                        <div class="row" style="margin-top:28px">
+                            <div class="col-6">
+                                <input type="button" id="CheckVideo" value="Check video" class="CheckVideoBtn btn btn-sm btn-default" data-toggle="modal" data-target="#CheckVideoModal" data-url="@item.Url" />
+                            </div>
+                            <div class="col-6">
+                                <input type="button" algorithm-id="@item.Id" algorithm-type="@item.Type" value="Select" class="algorithmSelectBtn btn btn-sm btn-default" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    <script src="~/js/matchCreation/algorithm.js"></script>
+}
+
+<div class="container">
+    <div class="modal fade" id="CheckVideoModal" tabindex="-1" role="dialog" style="margin:auto">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Check your video</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                </div>
+                <div class="modal-body">
+                    <div class="text-center">
+                        <iframe allow="fullscreen"
+                                id="player"
+                                width="100%" height="360"
+                                src="https://youtu.be/K_xTet06SUo"
+                                frameborder="0"></iframe>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-sm btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+</div>

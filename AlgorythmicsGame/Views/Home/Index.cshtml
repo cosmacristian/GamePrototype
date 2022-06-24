@@ -8,7 +8,7 @@
                 Algorythmics Game
             </h1>
             <p>
-                <a asp-action="Index" asp-controller="Game" class="btn ui-button coursesButton">Learn and play!</a>
+                <a asp-action="Index" asp-controller="MatchCreate" class="btn ui-button coursesButton">Learn and play!</a>
             </p>
         </div>
         <div class="content">
@@ -24,7 +24,7 @@
                             @Html.DisplayFor(modelItem => item.PlayersWaiting)
                         </div>
                         <div class="col-4 list listElementActions">
-                            <a asp-action="Index" asp-controller="Game" class="btn ui-button coursesButton">Join!</a>
+                            <a asp-action="Index" asp-controller="Game" asp-route-id="@item.MatchId" class="btn ui-button coursesButton">Join!</a>
                         </div>
                     </div>
                 </div>

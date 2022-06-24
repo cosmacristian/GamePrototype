@@ -37,8 +37,8 @@ namespace AlgorythmicsGame
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
 
-            services.AddDbContext<GameDbContext>(item => item.UseSqlServer(Configuration.GetConnectionString("myconn")));
-
+            services.AddDbContext<GameDbContext>(item => item.UseSqlServer(@"Data Source=(localdb)\MSSQLLocalDB; User ID=GameUser; Password='hajnalcris'; database=GameDB; Trusted_Connection=True;"));
+            // User ID=DESKTOP-DDVTSC4\Cris; Password='hajnalcris';
             services.AddSignalR();
         }
 

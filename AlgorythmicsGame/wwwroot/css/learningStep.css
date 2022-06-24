@@ -446,7 +446,7 @@ i {
     background-color: rgb(36, 165, 142);
 }
 
-.elementInSelect {
+.item.elementInSelect {
     border-color: gray !important;
 }
 

@@ -428,6 +428,8 @@ var AlgoRythmics = (function ($) {
 
             var a1 = elements.eq(pointer1);
             var a2 = elements.eq(pointer2);
+            a1.addClass('compare');
+            a2.addClass('compare');
 
             Utilities.logOperation('Compare(a[' + pointer1 + '] ,' + ' a[' + pointer2 + '])', 1);
 

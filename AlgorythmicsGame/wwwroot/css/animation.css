@@ -42,8 +42,13 @@
     background-color: forestgreen;
 }
 
-.elementInSelect {
+.item.elementInSelect {
     border-color: /*gray*/ rgb(0, 137, 255) !important;
+}
+
+.item.elementInSelect.compare {
+    border-color: /*gray*/ rgb(0, 137, 255) !important;
+    font-size: 20px;
 }
 
 #ArrayContainer {
@@ -563,7 +568,7 @@ div.Workspace.faded {
 .controllers {
     flex: 1 1;
     flex-wrap: nowrap;
-    margin: -5px 10px 0px 80px;
+    margin: 30px 10px 0px 80px;
     white-space: nowrap;
 }
     .controllers span {
