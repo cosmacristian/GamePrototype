@@ -57,6 +57,18 @@ namespace AlgorythmicsGame.Context
             lastMatchDate = DateTime.Now;
         }
 
+        public TimeSpan addSinglePlay(TimeSpan newTime)
+        {
+            singlePlays = singlePlays + 1;
+            lastMatchDate = DateTime.Now;
+            TimeSpan oldTime = bestTimeRecord;
+            if (bestTimeRecord == new TimeSpan())
+                bestTimeRecord = newTime;
+            if (bestTimeRecord > newTime)
+                bestTimeRecord = newTime;
+            return oldTime;
+        }
+
         public void addDefeat()
         {
             loses = loses + 1;

@@ -15,5 +15,7 @@ namespace AlgorythmicsGame.Models
         public string PartialViewName;
         public int ArraySize;
         public int MatchId;
+        public bool isSinglePlayer;
+        public TimeSpan PlayerBestTime;
     }
 }

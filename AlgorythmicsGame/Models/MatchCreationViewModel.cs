@@ -20,6 +20,7 @@ namespace AlgorythmicsGame.Models
         public InputType? InputType { get; set; }
         [RequiredIfPropEqualsValue(nameof(InputType), AlgorythmicsGame.Models.Enums.InputType.TeacherInput, ErrorMessage = "For Teacher Input please provide an array!")]
         public string TeacherInput { get; set; }
+        public bool IsSinglePlayer { get; set; }
 
         public string[] a
         {

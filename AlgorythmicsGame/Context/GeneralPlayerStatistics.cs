@@ -51,6 +51,14 @@ namespace AlgorythmicsGame.Context
             algorithmStats.addVictory();
         }
 
+        public TimeSpan addSinglePlayerVictory(int AlgorithmId, TimeSpan newTime)
+        {
+            points = points + 30;
+            lastMatchDate = DateTime.Now;
+            PlayerStatisticsForAlgorithms algorithmStats = StatisticsForAlgorithms.FirstOrDefault(x => x.AlgorithmId == AlgorithmId);
+            return algorithmStats.addSinglePlay(newTime);
+        }
+
         public void addDefeat(int AlgorithmId)
         {
             points = points + 10;

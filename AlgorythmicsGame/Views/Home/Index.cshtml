@@ -68,16 +68,18 @@
 
 
 <script>
-    var notifications = [{
-        @if(ViewData["Notifications"] != null) { 
+    var notifications = [
+        @if(ViewData["Notifications"] != null) {
             @foreach (var notifications in ViewData["Notifications"] as List<GameBadgesForPlayers>)
             {
+                @Html.Raw("{")
                 @Html.Raw("BadgeName: '"+notifications.Badge.Name+"',")
                 @Html.Raw("BadgeDesc: '"+notifications.Badge.Description + "',")
                 @Html.Raw("BadgeImg: '"+notifications.Badge.Image+"'")
+                @Html.Raw("}")
             }
         }
-    }];
+    ];
 
     window.onload = function () {
         $(document).ready(function () {

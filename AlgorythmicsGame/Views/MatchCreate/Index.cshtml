@@ -24,6 +24,11 @@
                 <input type="hidden" asp-for="SelectedAlgorithmId" />
                 <input type="hidden" asp-for="SelectedAlgorithmType" />
                 <div class="form-group ArraySize">
+                    <label asp-for="IsSinglePlayer" class="control-label"></label>
+                    <input type="checkbox" asp-for="IsSinglePlayer" class="form-control" />
+                    <span asp-validation-for="IsSinglePlayer" class="text-danger"></span>
+                </div>
+                <div class="form-group ArraySize">
                     <label asp-for="ArraySize" class="control-label"></label>
                     <input asp-for="ArraySize" class="form-control" />
                     <span asp-validation-for="ArraySize" class="text-danger"></span>

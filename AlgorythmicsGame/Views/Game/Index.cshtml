@@ -7,8 +7,17 @@
     {
         isRecursive = true;
     }
+    List<String> freeAlgorithms = new List<String>() { "freesearch", "freesort" };
+    bool isFree = false;
+    if (freeAlgorithms.Contains(Model.Algorithm.AlgorithmNickname))
+    {
+        isFree = true;
+
+    }
+    ViewData["isFree"] = isFree;
+
 }
-@section Styles {
+    @section Styles {
     <link rel="stylesheet" href="~/css/courses.css" />
     <link rel="stylesheet" href="~/css/shared.css" />
 }
@@ -113,7 +122,14 @@
         <script src="~/js/learningSteps/@Model.LearningStepScriptName"></script>
     }
     <script src="~/js/algorithms/sorting/@Model.AlgorithmScriptName"></script>
-    <script src="~/js/miniGame.js"></script>
+    @if (Model.isSinglePlayer)
+    {
+        <script src="~/js/miniGameSingle.js"></script>
+    }
+    else
+    {
+        <script src="~/js/miniGame.js"></script>
+    }
     @*</environment>
         <environment exclude="Development">
             <script src="~/js/common/mutualFunctions.js"></script>
@@ -125,7 +141,7 @@
             <script src="~/js/algorithms/sorting/@Model.AlgorithmScriptName"></script>
         </environment>*@
 
-    <script>
+        <script>
 
         var model = {
             inputType: @((int)(Model.AnimationModel.InputType ?? AlgorythmicsGame.Models.Enums.InputType.RandomInput)) ,
@@ -140,9 +156,12 @@
             algorithmIsRecursive: @(isRecursive?1:0),
             arraySize: @Model.ArraySize,
             matchId: @Model.MatchId,
-            authenticatedUserID: '@ViewData["AuhtenticatedUserID"]'
+            authenticatedUserID: '@ViewData["AuhtenticatedUserID"]',
+            isSinglePlayer: ('@Model.isSinglePlayer'.toLocaleLowerCase() === "true"),
+            playerBestTime: '@Model.PlayerBestTime',
+            isFree: ('@isFree'.toLocaleLowerCase() === "true")
         };
         $(document).ready(function () { AlgoRythmics.initComponents(model) });
-    </script>
+        </script>
 
 }

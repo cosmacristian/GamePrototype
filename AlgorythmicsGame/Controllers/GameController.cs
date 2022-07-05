@@ -160,8 +160,14 @@ namespace AlgorythmicsGame.Controllers
                 LearningStepScriptName = learningStepScriptName,
                 PartialViewName = partialViewName,
                 ArraySize = matchModel.ArraySize,
-                MatchId = matchModel.MatchId
+                MatchId = matchModel.MatchId,
+                isSinglePlayer = false
             };
+            if (matchModel.GetType() == typeof(OrganizedSingleMatch))
+            {
+                model.PlayerBestTime = ((OrganizedSingleMatch)matchModel).bestTimeRecord;
+                model.isSinglePlayer = true;
+            }
             return model;
         }
 

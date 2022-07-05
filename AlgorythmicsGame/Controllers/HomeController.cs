@@ -8,6 +8,7 @@ using AlgorythmicsGame.Models;
 using AlgorythmicsGame.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
 
 namespace AlgorythmicsGame.Controllers
 {
@@ -24,15 +25,23 @@ namespace AlgorythmicsGame.Controllers
 
         public async Task<IActionResult> Index()
         {
-            List<OrganizedMatch> runningMatches = await _context.Matches.ToListAsync();
+            List<OrganizedMultiMatch> runningMatches = await _context.MultiPlayerMatches.ToListAsync();
 
             List<GameBadgesForPlayers> notificationsToShow = null;
-            if (_signInManager.IsSignedIn(User)) {
+            if (_signInManager.IsSignedIn(User))
+            {
+                string userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
                 notificationsToShow = _context.GameBadgesForPlayers.Include(x=>x.Badge)
-                    .Where(x => x.UserWasNotified == false).ToList();
+                    .Where(x => x.PlayerId == userId && x.UserWasNotified == false).ToList();
+                foreach (var notification in notificationsToShow)
+                {
+                    notification.UserWasNotified = true;
+                }
             }
-            if(notificationsToShow!=null)
+            if (notificationsToShow != null) { 
                 ViewData["Notifications"] = notificationsToShow;
+                await _context.SaveChangesAsync();
+            }
 
             return View(runningMatches);
         }

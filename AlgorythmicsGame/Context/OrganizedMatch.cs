@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 namespace AlgorythmicsGame.Context
 {
 
-    public class OrganizedMatch
+    public abstract class OrganizedMatch
     {
         [Required]
         [Key]
@@ -24,7 +24,7 @@ namespace AlgorythmicsGame.Context
 
         [Required]
         [Column("PlayersWaiting", TypeName = "tinyint")]
-        public int PlayersWaiting { get; private set; }
+        public int PlayersWaiting { get; set; }
 
         [Required]
         [Column("ArraySize", TypeName = "tinyint")]
@@ -55,47 +55,6 @@ namespace AlgorythmicsGame.Context
         [Display(Name = "GuestPlayerId")]
         [StringLength(50, ErrorMessage = "The name should be less then 50 characters")]
         public string player2 { get; set; }
-
-        public OrganizedMatch()
-        {
-            Status = 0;
-            PlayersWaiting = 0;
-        }
-
-        public OrganizedMatch(string OrganizerPlayerId, int ArraySizeToSort)
-        {
-            Status = 1;
-            player1 = OrganizerPlayerId;
-            PlayersWaiting = 1;
-            ArraySize = ArraySizeToSort;
-        }
-
-        public void joinMatch(string PlayerId)
-        {
-            if (PlayersWaiting == 0)
-            {
-                player1 = PlayerId;
-                PlayersWaiting += 1;
-                Status = 1;
-            }
-            else
-            {
-                if (PlayersWaiting == 1)
-                {
-                    player2 = PlayerId;
-                    PlayersWaiting += 1;
-                    Status = 2;
-                }
-                else
-                {
-                    throw new OperationCanceledException("Player limit reached!");
-                }
-            }
-        }
-
-        public void finishMatch()
-        {
-            Status = 3;
-        }
+        
     }
 }

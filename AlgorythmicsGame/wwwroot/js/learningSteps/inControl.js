@@ -339,17 +339,25 @@
 
     async function waitForUserInput(actionName) {
         currentAction = actionName;
-        return new Promise(function (resolve, reject) {
-            promiseActionResolver = resolve;
-        });
+        if (!AlgoRythmics.isFree) {
+            return new Promise(function (resolve, reject) {
+                promiseActionResolver = resolve;
+            });
+        } else {
+            return;
+        }
     }
 
     async function waitForUserSelect(actionName1, actionName2) {
         currentPointer1 = actionName1;
         currentPointer2 = actionName2;
-        return new Promise(function (resolve, reject) {
-            promisePointerResolver = resolve;
-        });
+        if (!AlgoRythmics.isFree) {
+            return new Promise(function (resolve, reject) {
+                promisePointerResolver = resolve;
+            });
+        } else {
+            return;
+        }
     }
 
     function hintListeners() {
@@ -443,10 +451,15 @@
         $('#secondTip').addClass('invisible');
 
         Utilities.initOperationLog();
-     };
+    };
 
+    
     $(document).ready(function () {
+        
         $('#swapButton,#compareButton,#insertButton').on('click', function (event) {
+            if (AlgoRythmics.isFree) {
+                return;
+            }
             if (animationInProgress) {
                 return;
             }
@@ -485,8 +498,10 @@
         });
 
         //Divide & Conquer on click - Having multiple workspaces
-
         $(document).on('click', '.ItemContainer div', function (event) {
+            if (AlgoRythmics.isFree) {
+                return;
+            }
             //divide and select
             if (animationInProgress) {
                 return;
@@ -553,7 +568,11 @@
             }
         });
 
+
         $(document).on('click', '#ItemContainer div', function (event) {
+            if (AlgoRythmics.isFree) {
+                return;
+            }
             if (animationInProgress) {
                 return;
             }
@@ -600,6 +619,8 @@
                 }
             }
         });
+        
     });
+    
 
 })(jQuery, window.AlgoRythmics);

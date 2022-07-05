@@ -92,6 +92,7 @@ namespace AlgorythmicsGame
             app.UseSignalR(routes =>
             {
                 routes.MapHub<GameHub>("/gameHub");
+                routes.MapHub<GameHubSingle>("/gameHubSingle");
             });
 
             app.UseMvc(routes =>

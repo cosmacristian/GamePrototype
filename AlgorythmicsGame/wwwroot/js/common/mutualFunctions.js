@@ -23,6 +23,7 @@ var AlgoRythmics = (function ($) {
     AlgoRythmics.defaultCourse = false;
     AlgoRythmics.algorithmType = 0;
     AlgoRythmics.algorithmIsRecursive = false;
+    AlgoRythmics.isFree = false;
 
     AlgoRythmics.limits = {};
     AlgoRythmics.limits.lowerLimitI = "";
@@ -68,6 +69,7 @@ var AlgoRythmics = (function ($) {
         this.algorithmType = model.algorithmType;
         this.algorithmId = model.algorithmId;
         this.algorithmIsRecursive = model.algorithmIsRecursive;
+        this.isFree = model.isFree;
     };
     /*
      * Init the array

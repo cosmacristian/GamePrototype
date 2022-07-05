@@ -15,6 +15,8 @@ namespace AlgorythmicsGame.Context
         }
 
         public DbSet<OrganizedMatch> Matches { get; set; }
+        public DbSet<OrganizedSingleMatch> SinglePlayerMatches { get; set; }
+        public DbSet<OrganizedMultiMatch> MultiPlayerMatches { get; set; }
         public DbSet<Algorithm> Algorithms { get; set; }
         public DbSet<GeneralPlayerStatistics> PlayerStatistics { get; set; }
         public DbSet<PlayerStatisticsForAlgorithms> PlayerStatisticsPerAlgorithms { get; set; }
