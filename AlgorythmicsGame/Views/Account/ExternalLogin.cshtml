@@ -1,0 +1,79 @@
+﻿@model ExternalLoginViewModel
+@{
+    ViewData["Title"] = "profile_register_title";
+}
+<link rel="stylesheet" href="~/css/authentication.css" />
+<div style="padding:50px">
+    <h2>@ViewData["Title"]</h2>
+    <h4>Associate your @ViewData["LoginProvider"] account.</h4>
+    <hr />
+</div>
+
+<p class="text-info" style="padding-left:50px">
+    profile_external_register_description <strong>@ViewData["LoginProvider"]</strong>.
+</p>
+
+<div class="row" style="padding-left:50px">
+    <div class="col-md-4">
+        <form asp-action="ExternalLoginConfirmation" asp-route-returnurl="@ViewData["ReturnUrl"]" method="post">
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Email"></label>*
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>profile_register_studies</label>*
+                <select asp-for="Studies" class="form-control">
+                    <option>"profile_register_studies_mechatronics"</option>
+                    <option>"profile_register_studies_mechanical"</option>
+                    <option>"profile_register_studies_computer"</option>
+                    <option>"profile_register_studies_automation"</option>
+                    <option>"profile_register_studies_informatics"</option>
+                    <option>"profile_register_studies_telecom"</option>
+                    <option>"profile_register_studies_landscape"</option>
+                    <option>"profile_register_studies_horticulture"</option>
+                    <option>"profile_register_studies_communication"</option>
+                    <option>"profile_register_studies_publichealth"</option>
+                    <option>"profile_register_studies_translator"</option>
+                    <option>"profile_register_studies_other"</option>
+                </select>
+                <span asp-validation-for="Studies" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>"profile_register_grade"</label>*
+                <input asp-for="Grade" min="1" max="4" class="form-control" />
+                <span asp-validation-for="Grade" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>"profile_register_bday"</label>*
+                    <input type="date" asp-for="DateofBirth" class="form-control" />
+                    <span asp-validation-for="DateofBirth" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                *
+                <label>"profile_register_gender"</label>
+                <select asp-for="Gender" class="form-control">
+                    <option>"profile_register_gender_female"</option>
+                    <option>"profile_register_gender_male"</option>
+                </select>
+                <span asp-validation-for="Gender" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label>"profile_register_skills"</label>
+                <textarea rows="5" asp-for="ITSkills" class="form-control" placeholder=""profile_register_skills_placeholder"]"></textarea>
+                <span asp-validation-for="ITSkills" class="text-danger"></span>
+            </div>
+            <button type="submit" id="submitButton" disabled class="btn btn-default">"profile_register_submit"</button>
+        </form>
+    </div>
+    <div class="col-lg-6">
+        <h3>"profile_register_consent_title"</h3>
+        "profile_register_consent_text"]
+        <p>"profile_external_register_consent"] <input type="checkbox" onclick="if (this.checked) { $('#submitButton').prop('disabled',false)} else { $('#submitButton').prop('disabled',true)}" /></p>
+    </div>
+</div>
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

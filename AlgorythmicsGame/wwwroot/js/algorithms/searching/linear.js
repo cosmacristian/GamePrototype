@@ -29,6 +29,7 @@
            }
 
         await AlgoRythmics.cleanUp();
+        AlgoRythmics.finishAlgorithm();
         await AlgoRythmics.searchIsTerminated(keyFounded, position);
         $('#congratulations').modal('show');
 

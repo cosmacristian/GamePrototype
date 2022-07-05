@@ -1,0 +1,106 @@
+﻿@model IndexViewModel
+@{
+    ViewData["Title"] = "Index";
+
+    ViewData.AddActivePage(ManageNavPages.Index);
+}
+
+<link rel="stylesheet" href="~/css/site.css" />
+<link rel="stylesheet" href="~/css/profilecss.css" />
+
+<div class="profile-container">
+    <div class="page-header">
+        <h1>@Model.User.FirstName @Model.User.LastName</h1>
+    </div>
+    <div class="row ">
+
+        <div class="col-lg-12" style="padding:5px">
+            "profile_main_description"]
+        </div>
+
+        @* @{
+            foreach (var course in Model.StartedCourses)
+            {
+                <a class="courseSelect" asp-controller="Courses" asp-action="Details" asp-route-id="@course.Course.Id">
+                    <div class="col-sm-6 col-lg-4" style="padding:5px">
+
+                        <div class="course">
+                            <div class="progressValue">
+                                @course.Progress%
+                            </div>
+
+                            <div class="col-lg-12">
+                                <div class=" userProgress progress">
+                                    <div class="progress-bar " role="progressbar" style="width: @course.Progress%;" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100">@course.Progress%</div>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12 col-lg-12">
+                                <h3>
+                                    @course.Course.Name
+                                </h3>
+                                <h5>
+
+                                <span>@Localizer["profile_main_score"]</span>
+                                <span>
+                                    @if (course.Points < 0)
+                                    {
+                                        <b>0</b>
+                                    }
+                                    else
+                                    {
+                                        <b>@course.Points</b>
+                                    }
+                                    /
+                                </span>
+                                <span>@course.MaximumPoints</span>
+
+                                </h5>
+
+                                @if (course.Course.Description.Length > 50)
+                                {
+                                    <p style="color:gray">
+                                        @course.Course.Description.Substring(0, 50) ...
+                                    </p>
+
+                                }
+                                else
+                                {
+                                    <p style="color:gray">
+                                        @course.Course.Description
+                                    </p>
+                                }
+                            </div>
+                        </div>
+
+                    </div>
+                </a>
+            }
+        }*@
+
+
+    </div>
+</div>
+
+
+
+@*<environment include="Development">
+    <script src="~/lib/jquery/dist/jquery.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="~/js/common/profile.js"></script>*@
+@*</environment>
+    <environment exclude="Development">
+        <script src="https://ajax.aspnetcdn.com/ajax/jquery/jquery-2.2.0.min.js"
+                asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+                asp-fallback-test="window.jQuery"
+                crossorigin="anonymous"
+                integrity="sha384-K+ctZQ+LL8q6tP7I94W+qzQsfRV2a+AfHIi9k8z8l9ggpc8X+Ytst4yBo/hH+8Fk">
+        </script>
+        <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/bootstrap.min.js"
+                asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.min.js"
+                asp-fallback-test="window.jQuery && window.jQuery.fn && window.jQuery.fn.modal"
+                crossorigin="anonymous"
+                integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa">
+        </script>
+        <script src="~/js/site.min.js" asp-append-version="true"></script>
+    </environment>*@

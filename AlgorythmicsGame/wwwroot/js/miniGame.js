@@ -6,6 +6,12 @@
     var connection = new signalR.HubConnectionBuilder().withUrl("/gameHub").build();
     var _this = AlgoRythmics;
 
+    function cleanUpListener() {
+        connection.invoke("renounce", model.matchId, playerId).catch(function (err) {
+            return console.error(err.toString());
+        });
+    }
+
     $(document).ready(function () {
     //AlgoRythmics.startButtonListener = function () {
         //var user = document.getElementById("userInput").value;
@@ -14,15 +20,24 @@
         connection.start().then(function () {
             //document.getElementById("clickButton").disabled = true;
             //document.getElementById("startButton").disabled = false;
-            connection.invoke("waiting", arrayCount, model.inputType, model.matchId).catch(function (err) {
+            connection.invoke("waiting", arrayCount, _this.algorithmType, model.matchId, model.authenticatedUserID).catch(function (err) {
                 return console.error(err.toString());
             });
         }).catch(function (err) {
             return console.error(err.toString());
         });
+
+        window.addEventListener('beforeunload', function (e) {
+            e.preventDefault();
+            return "Are you sure you want to exit?";
+        });
+
+        window.addEventListener('unload', cleanUpListener);
         
       //  event.preventDefault();
     });
+
+
 
     //Disable send button until connection is established
     //document.getElementById("clickButton").disabled = true;
@@ -30,7 +45,7 @@
     connection.onclose(() => setTimeout(startSignalRConnection(connection), 5000));
 
 
-    connection.on("getReady", function (newId, gameId, arrayToSort) {
+    connection.on("getReady", function (newId, gameId, arrayToSort, valueToSearchFor) {
         //counter = 0;
         playerId = newId;
         //document.getElementById("player1Name").innerHTML = player1;
@@ -38,6 +53,9 @@
         if (model.inputType != _this.Enums.InputType.TeacherInput) {
             _this.teacherInput = arrayToSort;
             _this.inputType = 3;
+            if (model.algorithmType == "Searching") {
+                _this.searchTarget = valueToSearchFor;
+            }
         }
         _super.startButtonListener.call(_this);
     });
@@ -51,6 +69,7 @@
         //document.getElementById("startButton").disabled = false;
         //document.getElementById("player1Name").innerHTML = "";
         //document.getElementById("player2Name").innerHTML = "";
+        window.removeEventListener('unload', cleanUpListener);
         $('#congratulationsMessage').text(message);
         $('#congratulations').modal('show');
     });

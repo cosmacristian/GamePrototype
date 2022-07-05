@@ -1,0 +1,105 @@
+﻿@model EditViewModel
+@{
+    ViewData.AddActivePage(ManageNavPages.Edit);
+}
+<head>
+    <style type="text/css">
+        img {
+            width: 50%;
+            border-radius: 50%;
+        }
+
+        .ImageRow {
+            vertical-align: top;
+        }
+    </style>
+</head>
+<link rel="stylesheet" href="~/css/authentication.css" />
+<h4>"profile_edit_title"]</h4>
+
+<h3>@Model.FirstName @Model.LastName</h3>
+<partial name="_StatusMessage" for="StatusMessage" />
+<div class="row" style="padding:0px">
+    <div class="col-md-8 col-lg-12">
+        <form method="post">
+            <table>
+                <tr class="col-lg-9">
+                    <td>
+                        <div asp-validation-summary="All" class="text-danger"></div>
+                        <div class="form-group col-lg-8">
+                            <label>"profile_edit_form_username"]</label>
+                            <input asp-for="Username" class="form-control" disabled />
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <label asp-for="Email"></label>
+                            @if (Model.IsEmailConfirmed)
+                            {
+                                <div class="input-group">
+                                    <input asp-for="Email" class="form-control" />
+                                    <span class="input-group-addon" aria-hidden="true"><span class="glyphicon glyphicon-ok text-success"></span></span>
+                                </div>
+                            }
+                            else
+                            {
+                                <input asp-for="Email" class="form-control" />
+                                <button asp-action="SendVerificationEmail" class="btn btn-link">Send verification email</button>
+                            }
+                            <span asp-validation-for="Email" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <label>"profile_edit_form_phone"]</label>
+                            <input asp-for="PhoneNumber" class="form-control" />
+                            <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                        </div>
+                        <div class="form-group col-lg-8">
+                            <button type="submit" class="btn btn-default">"profile_edit_form_submit"]</button>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="ImageRow">
+                            <img src="@Html.DisplayFor(model => model.ProfileImage)" alt="" />
+                            <table>
+                                <tr>
+                                    <th>
+                                        <h3>"profile_edit_roles"]</h3>
+                                    </th>
+                                </tr>
+                                @foreach (var claim in Model.Claims)
+                                {
+                                    <tr>
+                                        <td>@claim.Value</td>
+                                    </tr>
+                                }
+                            </table>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+
+
+@section Scripts {
+    @*<environment include="Development">*@
+    <script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+    @*</environment>
+        <environment exclude="Development">
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.14.0/jquery.validate.min.js"
+                    asp-fallback-src="~/lib/jquery-validation/dist/jquery.validate.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.validator"
+                    crossorigin="anonymous"
+                    integrity="sha384-Fnqn3nxp3506LP/7Y3j/25BlWeA3PXTyT1l78LjECcPaKCV12TsZP7yyMxOe/G/k">
+            </script>
+            <script src="https://ajax.aspnetcdn.com/ajax/jquery.validation.unobtrusive/3.2.6/jquery.validate.unobtrusive.min.js"
+                    asp-fallback-src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"
+                    asp-fallback-test="window.jQuery && window.jQuery.validator && window.jQuery.validator.unobtrusive"
+                    crossorigin="anonymous"
+                    integrity="sha384-JrXK+k53HACyavUKOsL+NkmSesD2P+73eDMrbTtTk0h4RmOF8hF8apPlkp26JlyH">
+            </script>
+            <script src="~/js/common/site.min.js" asp-append-version="true"></script>
+        </environment>*@
+
+}

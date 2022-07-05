@@ -1,13 +1,15 @@
 ﻿using AlgorythmicsGame.Models.CustomValidation;
 using AlgorythmicsGame.Models.Enums;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace AlgorythmicsGame.Models
 {
     public class MatchCreationViewModel
     {
         public List<Algorithm> AvailableAlgorithms;
-        public int SelectedAlgorithmId { get; set; }
+        [Required]
+        public int? SelectedAlgorithmId { get; set; }
         public AlgorithmType SelectedAlgorithmType { get; set; }
         //public string LearningStepScriptName { get; set; }
         //public string AlgorithmScriptName { get; set; }

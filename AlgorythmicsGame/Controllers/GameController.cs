@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using AlgorythmicsGame.Context;
 using AlgorythmicsGame.Models;
@@ -113,6 +114,7 @@ namespace AlgorythmicsGame.Controllers
             }
 
             ViewData["EditMode"] = true;
+            ViewData["AuhtenticatedUserID"] = User.FindFirstValue(ClaimTypes.NameIdentifier);
             AlgorithmViewModel model = CreateAlgorithmViewModel(algorithmsModel, matchModel);
 
             return View(model);

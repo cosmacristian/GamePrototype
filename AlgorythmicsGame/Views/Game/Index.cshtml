@@ -139,7 +139,8 @@
             defaultCourse: true,
             algorithmIsRecursive: @(isRecursive?1:0),
             arraySize: @Model.ArraySize,
-            matchId: @Model.MatchId
+            matchId: @Model.MatchId,
+            authenticatedUserID: '@ViewData["AuhtenticatedUserID"]'
         };
         $(document).ready(function () { AlgoRythmics.initComponents(model) });
     </script>

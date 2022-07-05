@@ -51,6 +51,16 @@
     font-size: 20px;
 }
 
+.item.elementInSelect.compareWrong {
+    border-color: /*gray*/ rgb(0, 137, 255) !important;
+    font-size: 20px;
+}
+
+.item.elementInSelect.compareCorrect {
+    border-color: /*gray*/ rgb(0, 137, 255) !important;
+    font-size: 20px;
+}
+
 #ArrayContainer {
     position: relative;
 }

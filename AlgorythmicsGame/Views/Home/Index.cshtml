@@ -39,3 +39,66 @@
         </div>
     </div>
 </div>
+
+
+<div class="modal fade" id="congratulations">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+
+            <!-- Modal Header -->
+            <div class="modal-header">
+                <h4 id="badgeTitle" class="modal-title">Animation Finished!</h4>
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+            </div>
+
+            <!-- Modal body -->
+            <div class="modal-body">
+                <p id="badgeMessage"> Congratulations you won! </p>
+                <img id="badgeImage"src="https://algorythmics.ms.sapientia.ro/images/home/join.png" />
+            </div>
+
+            <!-- Modal footer -->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary closeModal" data-dismiss="modal">Close</button>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var notifications = [{
+        @if(ViewData["Notifications"] != null) { 
+            @foreach (var notifications in ViewData["Notifications"] as List<GameBadgesForPlayers>)
+            {
+                @Html.Raw("BadgeName: '"+notifications.Badge.Name+"',")
+                @Html.Raw("BadgeDesc: '"+notifications.Badge.Description + "',")
+                @Html.Raw("BadgeImg: '"+notifications.Badge.Image+"'")
+            }
+        }
+    }];
+
+    window.onload = function () {
+        $(document).ready(function () {
+            if (notifications.length > 0) {
+                currentNotification = notifications.pop()
+                $('#badgeTitle').text(currentNotification.BadgeName);
+                $('#badgeMessage').text(currentNotification.BadgeDesc);
+                $('#badgeImage').attr("src", currentNotification.BadgeImg);
+                $('#congratulations').modal('show');
+            }
+            //  event.preventDefault();
+        });
+
+        $('#congratulations').on('hidden.bs.modal', function () {
+            if (notifications.length > 0) {
+                currentNotification = notifications.pop()
+                $('#badgeTitle').text(currentNotification.BadgeName);
+                $('#badgeMessage').text(currentNotification.BadgeDesc);
+                $('#badgeImage').attr("src", currentNotification.BadgeImg);
+                $('#congratulations').modal('show');
+            }
+        });
+    }
+</script>

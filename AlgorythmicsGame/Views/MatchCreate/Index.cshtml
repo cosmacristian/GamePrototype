@@ -57,13 +57,14 @@
         </div>
     </div>
     <div class="content">
-        <div class="Tray">
+        <div style="padding-bottom:5em" class="Tray">
             <div style="padding-left:40px" class="col-lg-12" id="ArrayItemsContainer">
             </div>
             <div class="col-lg-12" id="ItemContainer">
             </div>
         </div>
-        <div>
+        <span asp-validation-for="SelectedAlgorithmId" class="text-danger"></span>
+        <div style="overflow-y: scroll; height:15em">
             @foreach (var item in Model.AvailableAlgorithms)
             {
                 <div class="col-lg-12 list listElement @item.Type" style="

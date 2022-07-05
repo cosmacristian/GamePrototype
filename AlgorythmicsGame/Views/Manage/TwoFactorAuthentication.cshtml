@@ -1,0 +1,46 @@
+@model TwoFactorAuthenticationViewModel
+@{
+    ViewData.AddActivePage(ManageNavPages.TwoFactorAuthentication);
+}
+<link rel="stylesheet" href="~/css/authentication.css" />
+<h4>"profile_twofactor_title"]</h4>
+@if (Model.Is2faEnabled)
+{
+    if (Model.RecoveryCodesLeft == 0)
+    {
+        <div class="alert alert-danger">
+            "profile_twofactor_zero"]
+        </div>
+    }
+    else if (Model.RecoveryCodesLeft == 1)
+    {
+        <div class="alert alert-danger">
+            "profile_twofactor_one"]
+        </div>
+    }
+    else if (Model.RecoveryCodesLeft <= 3)
+    {
+        <div class="alert alert-warning">
+            <strong>@Model.RecoveryCodesLeft "profile_twofactor_more"]</strong>
+            "profile_twofactor_more_link"]
+        </div>
+    }
+
+        <a asp-action="Disable2faWarning" class="btn btn-default">"profile_twofactor_disable"]</a>
+        <a asp-action="GenerateRecoveryCodesWarning" class="btn btn-default">"profile_twofactor_reset"]</a>
+}
+
+<h5>"profile_twofactor_authenticator_title"]</h5>
+@if (!Model.HasAuthenticator)
+{
+<a asp-action="EnableAuthenticator" class="btn btn-default">"profile_twofactor_authenticator_add"]</a>
+}
+else
+{
+<a asp-action="EnableAuthenticator" class="btn btn-default">"profile_twofactor_authenticator_configure"]</a>
+<a asp-action="ResetAuthenticatorWarning" class="btn btn-default">"profile_twofactor_authenticator_reset"]</a>
+}
+
+@section Scripts {
+    @await Html.PartialAsync("_ValidationScriptsPartial")
+}

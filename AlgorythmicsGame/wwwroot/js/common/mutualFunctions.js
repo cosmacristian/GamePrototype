@@ -312,6 +312,7 @@ var AlgoRythmics = (function ($) {
                         $('#value').trigger("change");
                     } else {
                         $('#value').prop('disabled', false);
+                        $('#value').val(this.searchTarget);
                     }
                 }
                 else {

@@ -28,7 +28,7 @@ namespace AlgorythmicsGame.Controllers
             model.InputType = Models.Enums.InputType.RandomInput;
             model.TeacherInput = "";
 
-            model.AvailableAlgorithms = _dataContext.Algorithms.ToList();
+            model.AvailableAlgorithms = _dataContext.Algorithms.Where(x=>x.IsPublished==true).ToList();
 
             return View(model);
         }
@@ -39,7 +39,7 @@ namespace AlgorythmicsGame.Controllers
             if (ModelState.IsValid)
             {
                 OrganizedMatch newMatch = new OrganizedMatch();
-                newMatch.AlgorithmId = model.SelectedAlgorithmId;
+                newMatch.AlgorithmId = model.SelectedAlgorithmId.Value;
                 newMatch.Animation = model.Animation;
                 newMatch.ArraySize = model.ArraySize;
                 newMatch.InputType = model.InputType;

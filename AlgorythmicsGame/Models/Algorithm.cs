@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using System.ComponentModel.DataAnnotations;
 using AlgorythmicsGame.Models.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
+using AlgorythmicsGame.Context;
 
 namespace AlgorythmicsGame.Models
 {
@@ -40,5 +41,7 @@ namespace AlgorythmicsGame.Models
         public bool IsPublished { get; set; }
 
         //public List<AlgorithmTranslations> Translations { get; set; }
+
+        public List<PlayerStatisticsForAlgorithms> StatisticsForAlgorithms { get; set; }
     }
 }

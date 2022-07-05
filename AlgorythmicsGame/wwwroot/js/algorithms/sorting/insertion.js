@@ -57,6 +57,7 @@
 
         await AlgoRythmics.cleanUp();
         if (i > n - 1) {
+            AlgoRythmics.finishAlgorithm();
             await AlgoRythmics.arrayIsSorted();
         }
      

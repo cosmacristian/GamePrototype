@@ -10,11 +10,13 @@ namespace AlgorythmicsGame.Models
     {
         public string userId { get; set; } 
         public IClientProxy client { get; set; }
+        public string authenticatedUserId { get; set; }
 
-        public Player(string userId, IClientProxy client)
+        public Player(string userId, IClientProxy client, string authenticatedUserId)
         {
             this.userId = userId;
             this.client = client;
+            this.authenticatedUserId = authenticatedUserId;
         }
     }
 }
