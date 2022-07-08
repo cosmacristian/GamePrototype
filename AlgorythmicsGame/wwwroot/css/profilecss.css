@@ -12,7 +12,7 @@
 
 .w3-round-large {
     background-color: rgb(36, 165, 142);
-    color:white;
+    color: white;
 }
 
 .course {
@@ -22,12 +22,12 @@
     height: 400px
 }
 
-.page-header{
-    padding-left:35px;
+.page-header {
+    padding-left: 35px;
 }
 
-a.courseSelect{
-    color:black;
+a.courseSelect {
+    color: black;
 }
 
 .courseSelect:hover .course {
@@ -35,13 +35,13 @@ a.courseSelect{
     transition: all 0.5s ease 0s;
 }
 
-.userProgress{
-    margin-top:20px;
+.userProgress {
+    margin-top: 20px;
 }
 
-    .userProgress .progress-bar {
-        background-color:rgb(36, 165, 142) ;
-    }
+.userProgress .progress-bar {
+    background-color: rgb(36, 165, 142);
+}
 
 .profile-container {
     margin: 30px;

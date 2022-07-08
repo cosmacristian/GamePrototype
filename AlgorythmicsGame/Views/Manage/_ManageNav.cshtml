@@ -6,14 +6,14 @@
 
 <link rel="stylesheet" href="~/css/authentication.css" />
 <ul class="nav nav-pills nav-stacked">
-    <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">"profile_nav_public_profile"]</a></li>
-    <li class="@ManageNavPages.EditNavClass(ViewContext)"><a asp-action="Edit">"profile_nav_edit_profile"]</a></li>
-    <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">"profile_nav_password"]</a></li>
+    <li class="@ManageNavPages.IndexNavClass(ViewContext)"><a asp-action="Index">Public Profile</a></li>
+    <li class="@ManageNavPages.EditNavClass(ViewContext)"><a asp-action="Edit">Edit Profile</a></li>
+    <li class="@ManageNavPages.ChangePasswordNavClass(ViewContext)"><a asp-action="ChangePassword">Password</a></li>
     @if (hasExternalLogins)
     {
-        <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)"><a asp-action="ExternalLogins">"profile_nav_external"]</a></li>
+        <li class="@ManageNavPages.ExternalLoginsNavClass(ViewContext)"><a asp-action="ExternalLogins">External logins</a></li>
     }
-    <li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a asp-action="TwoFactorAuthentication">"profile_nav_two_factor"]</a></li>
-    <li class="@ManageNavPages.AdvancedOptionsNavClass(ViewContext)"><a asp-action="AdvancedOptions">"profile_nav_options"]</a></li>
+    <li class="@ManageNavPages.TwoFactorAuthenticationNavClass(ViewContext)"><a asp-action="TwoFactorAuthentication">Two-factor authentication</a></li>
+    <li class="@ManageNavPages.AdvancedOptionsNavClass(ViewContext)"><a asp-action="AdvancedOptions">Advanced Options</a></li>
 </ul>
 

@@ -108,10 +108,14 @@ namespace AlgorythmicsGame.Controllers
 
             }*/
 
+            GeneralPlayerStatistics playerStatistics = await _context.PlayerStatistics.FirstOrDefaultAsync(m => m.PlayerStatisticsId == user.Id);
+            List<PlayerStatisticsForAlgorithms> gamesPlayed = await _context.PlayerStatisticsPerAlgorithms.Include(m=>m.Algorithm).Where(m => m.PlayerId == user.Id /*&& !m.Algorithm.Name.Contains("free")*/).ToListAsync();
             var model = new IndexViewModel
             {
                 User = user,
                 //StartedCourses = startedCourses
+                UserStats = playerStatistics,
+                PlayedAlgorithms = gamesPlayed
             };
 
             return View(model);
